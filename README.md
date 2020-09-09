@@ -1,4 +1,21 @@
+## Usage
+```
+from rejected_article_tracker import RejectedArticlesMatch
 
+results = []
+RejectedArticlesMatch(
+            articles=articles,
+            config=config,
+            email=email,
+            results=results
+        ).match()
+```
+
+<br>
+<br>
+
+---
+## Compile and deploy  
 
 Prerequisites:
 
@@ -10,10 +27,10 @@ pip install --user --upgrade twine
 
 To compile:
 ```
-python setup.py bdist_wheel
+python3 setup.py bdist_wheel
 ```
 
 To push to pypi:
 ```
-python -m twine upload dist/*
+python3 -m twine upload dist/*
 ```
