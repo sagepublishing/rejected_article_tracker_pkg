@@ -15,13 +15,11 @@ class ArticleItem:
             'manuscript_id': self.__required(items, 'manuscript_id'),
             'raw_manuscript_id': ManuscriptIdRaw(items['manuscript_id']).id(),
             'journal_name': self.__required(items, 'journal_name'),
-            'manuscript_type': self.__required(items, 'manuscript_type'),
             'manuscript_title': self.__required(items, 'manuscript_title'),
             'submission_date': submission_date,
             'decision_date': items['decision_date'],
             'authors': AuthorNames(items['authors']).names(),
             'text_sub_date': items['submission_date'].strftime("%Y-%m-%d"),
-            'decision_type': items['decision_type'],
             'final_decision': items['final_decision']
         }
 

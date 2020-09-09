@@ -10,26 +10,22 @@ class TestArticleItem(unittest.TestCase):
         items = {
             'manuscript_id': '1',
             'journal_name': 'Some Journal;',
-            'manuscript_type': 'type',
             'manuscript_title': 'What is in a name?',
             'submission_date': pd.to_datetime('2020-04-03'),
             'decision_date': pd.to_datetime('2020-05-12'),
             'authors': 'Hails,Andy;Day,Adam',
             'text_sub_date': '',
-            'decision_type': 'Draft',
             'final_decision': 'Approved'
         }
         article = ArticleItem(items)
         res = article.to_dict()
         self.assertEqual(res['manuscript_id'], items['manuscript_id'])
         self.assertEqual(res['journal_name'], items['journal_name'])
-        self.assertEqual(res['manuscript_type'], items['manuscript_type'])
         self.assertEqual(res['manuscript_title'], items['manuscript_title'])
         self.assertTrue(type(res['submission_date']) == pd._libs.tslibs.timestamps.Timestamp)
         self.assertTrue(type(res['decision_date']) == pd._libs.tslibs.timestamps.Timestamp)
         self.assertEqual(res['authors'], 'Andy+Hails, Adam+Day')
         self.assertEqual(res['text_sub_date'], '2020-04-03')
-        self.assertEqual(res['decision_type'], items['decision_type'])
         self.assertEqual(res['final_decision'], items['final_decision'])
 
 
@@ -44,7 +40,6 @@ class TestArticleItem(unittest.TestCase):
         items = {
             'manuscript_id': '1',
             'journal_name': 'Some Journal;',
-            'manuscript_type': 'type',
             'manuscript_title': 'What is in a name?',
             'submission_date': '',
         }
@@ -58,7 +53,6 @@ class TestArticleItem(unittest.TestCase):
         items = {
             'manuscript_id': '1',
             'journal_name': 'Some Journal;',
-            'manuscript_type': 'type',
             'manuscript_title': 'What is in a name?',
             'submission_date': 'NOTADATE'
         }
