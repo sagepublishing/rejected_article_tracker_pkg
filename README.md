@@ -1,5 +1,5 @@
 
-# {{ Name }}: check if article has been published
+# {{ Name }}: check if an article has been published elsewhere.
 
 ## What is it?
 
@@ -9,7 +9,7 @@ Presently, the package takes JSON input, but using a library such as [pandas](ht
 
 If you are a ScholarOne user, you can produce this easily. More detailed instructions are below. 
 
-## Where to get it
+## Where to get it?
 
 Although the source code is on Github, the latest release is always published to the [Python package index](https://pypi.org/project/rejected-article-tracker).
 
