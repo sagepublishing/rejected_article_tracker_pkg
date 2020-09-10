@@ -1,5 +1,5 @@
 import unittest
-from .src import BestCandidate
+from ..src.BestCandidate import BestCandidate
 
 
 class TestBestCandidate(unittest.TestCase):

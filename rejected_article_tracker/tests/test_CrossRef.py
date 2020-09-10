@@ -1,5 +1,5 @@
 import unittest
-from .src.CrossRef import CrossRef
+from ..src.CrossRef import CrossRef
 from .Fakes import fake_http_client
 
 

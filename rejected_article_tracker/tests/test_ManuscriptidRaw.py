@@ -1,5 +1,5 @@
 import unittest
-from .src.ManuscriptIdRaw import ManuscriptIdRaw
+from ..src.ManuscriptIdRaw import ManuscriptIdRaw
 
 
 class TestManuscriptIdRaw(unittest.TestCase):

@@ -1,7 +1,7 @@
 import unittest
 import pandas as pd
 
-from .src.ArticleItem import ArticleItem
+from ..src.ArticleItem import ArticleItem
 
 
 class TestArticleItem(unittest.TestCase):

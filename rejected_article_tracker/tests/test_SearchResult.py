@@ -1,5 +1,5 @@
 import unittest
-from .src import SearchResult
+from ..src.SearchResult import SearchResult
 from .Fakes import fake_classifier
 
 

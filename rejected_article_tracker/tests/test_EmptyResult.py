@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from .src.EmptyResult import EmptyResult
+from ..src.EmptyResult import EmptyResult
 
 
 class TestEmptyResult(unittest.TestCase):

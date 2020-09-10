@@ -1,5 +1,5 @@
 import unittest
-from .src.FilteredArticles import FilteredArticles
+from ..src.FilteredArticles import FilteredArticles
 
 
 class TestFilteredArticles(unittest.TestCase):

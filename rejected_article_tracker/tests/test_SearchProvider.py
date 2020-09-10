@@ -1,5 +1,5 @@
 import unittest
-from .src import SearchProvider
+from ..src.SearchProvider import SearchProvider
 
 
 class TestSearchProvider(unittest.TestCase):

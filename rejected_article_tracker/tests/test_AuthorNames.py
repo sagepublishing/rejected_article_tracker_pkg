@@ -1,5 +1,5 @@
 import unittest
-from .src.AuthorNames import AuthorNames
+from ..src.AuthorNames import AuthorNames
 
 
 class TestAuthorNames(unittest.TestCase):

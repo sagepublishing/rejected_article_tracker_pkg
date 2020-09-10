@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from .src import Result
+from ..src.Result import Result
 
 
 class TestResult(unittest.TestCase):
