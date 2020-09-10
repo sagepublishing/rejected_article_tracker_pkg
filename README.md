@@ -78,10 +78,19 @@ print(results)
 ```
 ---
 
-
+<br>
+<br>
 
 ## Usage with directly downloaded Scholar One data
+**Preparing the input:**
 
+If using Scholar One, under `‘Peer Review Details Reports’` select `‘Build Your Own Reports’`. 
+The report should have the following columns:
+
+```
+‘Journal Name', 'Manuscript ID', 'Manuscript Title', 'Author Names', 'Submission Date', 'Decision Date', 'Accept or Reject Final Decision'
+```
+**Usage:**
 ```python
 
 from rejected_article_tracker import ScholarOneRejectedArticlesMatch
@@ -114,8 +123,14 @@ articles = [
 ]
 """
 
-... # Assume similar config/email in example above 
+# @see below for configuration details.
+config = {
+    "filter_dates": {'from': '2007-01-01', 'to': '2020-07-01'},
+    "threshold": 70, # Filters out matches which are less than this nubmer  
+}
 
+# The CrossRef API requires an email address for lookups.    
+email = "someome@example.com"
 
 # Define a 'results' list.
 results = []
