@@ -17,8 +17,8 @@ RejectedArticlesMatch(
 
 ```
 results = []
-articles = list(map(ScholarOneArticleAdapter.adapt, articles))
-RejectedArticlesMatch(
+
+ScholarOneRejectedArticlesMatch(
     articles=articles,
     config=config,
     email=email,
