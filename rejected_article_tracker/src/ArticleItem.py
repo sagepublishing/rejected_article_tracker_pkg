@@ -6,6 +6,18 @@ from .ManuscriptIdRaw import ManuscriptIdRaw
 class ArticleItem:
 
     def __init__(self, items):
+        """
+        :param items: dict
+            manuscript_id: str
+            journal_name: str
+            manuscript_title: str
+            submission_date: str    Most date formats will work.
+            decision_date: str      Most date formats will work.
+            authors: str            Semi-colon-separated list of names in the format:
+                                    "{last name}, {first_names}; {last name}, {first_names}"
+                                    e.g.  "De Vries, Ieke; Goggin, Kelly"
+            final_decision: str
+        """
         submission_date = self.__required(items, 'submission_date')
 
         if not isinstance(submission_date, pd.Timestamp):
