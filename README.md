@@ -48,9 +48,7 @@ articles = [
     }
 ]
 
-
-# A dict of configuration.
-# See below for more details.
+# @see below for configuration details.
 config = {
     "filter_dates": {'from': '2007-01-01', 'to': '2020-07-01'},
     "threshold": 70, # Filters out matches which are less than this nubmer  
@@ -87,21 +85,36 @@ print(results)
 ```python
 
 from rejected_article_tracker import ScholarOneRejectedArticlesMatch
+import pandas as pd
 
-# A spreadsheet downloaded from S1 and converted to a python dict:   
+df = pd.read_excel("/path/to/file")
+allowed_cols = [
+    'Journal Name',
+    'Manuscript ID',
+    'Manuscript Title',
+    'Author Names',
+    'Submission Date',
+    'Decision Date',
+    'Accept or Reject Final Decision'
+]
+articles = df[allowed_cols].to_dict('records')
+
+# Which might look like:
+"""  
 articles = [
    {
+      "Journal Name": "Trauma, Violence, & Abuse",
+      "Manuscript ID": "TVA-18-057",
       "Manuscript Title": "The Impact of Childhood Abuse on the Commercial Sexual Exploitation of Youth. A Systematic Review and Meta-Analysis ",
       "Author Names": "De Vries, Ieke; Goggin, Kelly",
-      "Manuscript ID": "TVA-18-057",
       "Submission Date": "2018-07-20T13:29:58.999Z",
       "Decision Date": "1899-12-30T00:00:00.000Z",
-      "Journal Name": "Trauma, Violence, & Abuse",
       "Accept or Reject Final Decision": ""
     }
 ]
+"""
 
-... # Assume similar values in example above 
+... # Assume similar config/email in example above 
 
 
 # Define a 'results' list.
