@@ -11,8 +11,21 @@ RejectedArticlesMatch(
         ).match()
 ```
 
-<br>
-<br>
+
+
+## Usage with downloaded Scholar One data
+
+```
+results = []
+articles = list(map(ScholarOneArticleAdapter.adapt, articles))
+RejectedArticlesMatch(
+    articles=articles,
+    config=config,
+    email=email,
+    results=results
+).match()
+```
+
 
 ---
 ## Compile and deploy  
