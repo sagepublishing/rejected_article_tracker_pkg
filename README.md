@@ -90,6 +90,25 @@ The report should have the following columns:
 ```
 ‘Journal Name', 'Manuscript ID', 'Manuscript Title', 'Author Names', 'Submission Date', 'Decision Date', 'Accept or Reject Final Decision'
 ```
+
+It’s ok to include other columns in the Excel file, but they are not needed. Importantly: remember to download your report as Excel 2007 Data Format.
+
+If you do not use ScholarOne, you can still create an xlsx file of the data with the same column headings and use that as input. The data should appear in each column as follows:
+
+
+
+| Column Name | Contents |
+| --- | --- |
+| Journal Name | Simply the name of the journal e.g. ‘Proceedings of mysociety’ |
+| Manuscript Title | The text of the title of the manuscript you are looking for. The article will not be found without this. |
+| Author Names | This is a critical part of the input data and MUST be formatted ‘LastName1, FirstName1; LastName2, FirstName2 …’ So note that authors names appear with their lastname first and then a comma, followed by the first name. Then, when we have multiple authors on a paper, we separate them with semicolons. |
+| Accept or Reject Final Decision | E.g. ‘Accept’ or ‘Reject’ (the application will simply ignore everything that is listed as ‘Accept’) |
+| Decision Date | The date of final rejection from your journal. Should be a date string format, like: “YYYY-MM-DD”, “YYYY-MM-DD hh:mm:ss” Either format is fine. |
+| Submission Date | Same format as decision date. |
+| Manuscript ID | This can be any unique id that you use to identify the article. If it is formatted in the way that ScholarOne format their ids, then revision numbers will be ignored so that each article is only searched for once. So ‘ABC-20-123’, ‘ABC-20-123.R1’ and ‘ABC-20-123.R2’ all become ‘ABC-20-123’ |
+
+
+
 **Usage:**
 ```python
 
