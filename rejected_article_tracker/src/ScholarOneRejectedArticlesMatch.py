@@ -13,7 +13,7 @@ class ScholarOneRejectedArticlesMatch:
             results=results
         )
 
-    def match(self):
+    def match(self) -> list:
         return self.matcher.match()
 
 

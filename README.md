@@ -1,5 +1,5 @@
 
-# {{ Name }}: check if an article has been published elsewhere.
+# SAGE Rejected Article Tracker: Check if an article has been published elsewhere.
 
 ## What is it?
 
