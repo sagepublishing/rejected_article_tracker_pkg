@@ -11,7 +11,7 @@ class ScholarOneRejectedArticlesMatch:
             config=config,
             email=email,
             results=results
-        ).match()
+        )
 
     def match(self):
         return self.matcher.match()
