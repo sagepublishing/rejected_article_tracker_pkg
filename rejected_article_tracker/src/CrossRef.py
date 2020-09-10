@@ -1,6 +1,6 @@
 from .SearchProvider import SearchProvider
-
 import json
+
 
 class CrossRef(SearchProvider):
     def __init__(self, article: dict, http_client, sleep, email=''):
@@ -20,11 +20,11 @@ class CrossRef(SearchProvider):
             'query.author': self.article['authors'].split(', '),
             'rows': 10
         }
+
         headers = {
-            'User-Agent': "Adam Day's rejected article tracker",
+            'User-Agent': "{} article tracking for article {}".format(self.email, self.article['manuscript_id']),
             'mailto': self.email
         }
-
         response = self.http_client.get(address, params=payload, headers=headers)
 
         return response.json()['message']['items']
