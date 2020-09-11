@@ -5,6 +5,8 @@ on: [push]
 jobs:
   test_pkg:
     name: Test Package
+    runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
@@ -23,6 +25,8 @@ jobs:
   deploy_pkg:
     name: Deploy latest tag to pypi
     needs: test_pkg
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - uses: casperdcl/deploy-pypi@v1
