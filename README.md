@@ -50,7 +50,6 @@ articles = [
 
 # @see below for configuration details.
 config = {
-    "filter_dates": {'from': '2007-01-01', 'to': '2020-07-01'},
     "threshold": 70, # Filters out matches which are less than this nubmer  
 }
 
@@ -142,7 +141,6 @@ articles = [
 
 # @see below for configuration details.
 config = {
-    "filter_dates": {'from': '2007-01-01', 'to': '2020-07-01'},
     "threshold": 70, # Filters out matches which are less than this nubmer  
 }
 
@@ -237,8 +235,7 @@ Example out when NO match found:
 Configuration is set using a dictionary. The following values can be set: 
 
 | Name | Description | Example
-| --- | --- | --- |
-| `filter_dates` |  Dates to include articles from and to. Anything outdide of these dates will not be considered | ```{"filter_dates": {'from': '2007-01-01', 'to': '2020-07-01'}}```  
+| --- | --- | --- |  
 | `threshold` | An integer value which determines the minimum "cut off" for scoring matching articles. Any matching aerticles below this score will not be considered. | `75` |   
 ---
 
