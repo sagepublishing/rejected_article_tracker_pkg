@@ -1,0 +1,8 @@
+pandas
+openpyxl
+xlsxwriter
+fuzzywuzzy
+requests
+sklearn
+numpy
+coverage

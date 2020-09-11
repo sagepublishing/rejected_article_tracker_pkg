@@ -1,4 +1,6 @@
-git tag $(python setup.py --version)
-
 python3 -m twine upload dist/*
-git push --tags
+
+if [ $? -eq 0 ]; then
+  git tag $(python setup.py --version)
+  git push --tags
+fi
