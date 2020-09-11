@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='rejected_article_tracker',
-    version='1.3.11',
+    version='1.3.12',
     scripts=['rejected_article_tracker/__init__.py'],
     author="Andy Hails",
     author_email="andy.hails@sagepub.co.uk",
