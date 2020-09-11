@@ -22,7 +22,7 @@ class RejectedArticlesMatch:
         :param results: list    A list to populate after each result is processed.
                                 By injecting results we can grab the already processed results in case off failiure.
         """
-        self.articles = FilteredArticles(articles=articles, filter_dates=config['filter_dates'])
+        self.articles = FilteredArticles(articles=articles)
         self.email = email
         self.config = config
         self.results = results

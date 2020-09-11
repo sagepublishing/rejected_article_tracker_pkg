@@ -4,8 +4,7 @@ from .ManuscriptIdRaw import ManuscriptIdRaw
 
 
 class FilteredArticles:
-    def __init__(self, articles: list, filter_dates: dict):
-        self.filter_dates = filter_dates
+    def __init__(self, articles: list):
         self.articles = [ArticleItem(a) for a in self.__filter(articles)]
 
     def to_dict(self):
@@ -26,10 +25,6 @@ class FilteredArticles:
         df['decision_date'] = df['decision_date'].map(lambda x: pd.to_datetime(x, errors='coerce', utc=True))
         df = df.dropna(subset=['manuscript_title', 'authors'])
         df = df.drop_duplicates(subset=['raw_manuscript_id'], keep='last')
-        df = df[
-            (df['submission_date'] >= self.filter_dates['from']) &
-            (df['submission_date'] <= self.filter_dates['to'])
-            ]
         df = df[df['final_decision'] != 'Accept']
 
         return df.to_dict('records')
