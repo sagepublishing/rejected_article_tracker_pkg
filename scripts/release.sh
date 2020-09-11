@@ -1,7 +1,8 @@
 ###
 # Use this script to release to pypi.
 # 1. Update version in setup.up
-# 2. Run this script from project root:
+# 2. COMMIT everything
+# 3. Run this script from project root:
 # ```
 #   $ scripts/release.sh
 # ```
