@@ -22,8 +22,8 @@ class CrossRef(SearchProvider):
         }
 
         headers = {
-            'User-Agent': "{} article tracking for article {}".format(self.email, self.article['manuscript_id']),
-            'mailto': self.email
+            'User-Agent': "User {}: SAGE article lookup for article {}".format(self.email, self.article['manuscript_id']),
+            'mailto': 'andy.hails@sagepub.co.uk'
         }
         response = self.http_client.get(address, params=payload, headers=headers)
 
