@@ -13,5 +13,8 @@ if [ -n "$(git status --porcelain)" ]; then
   exit 1
 fi
 
+echo "Creating and pushing tag: $(python setup.py --version)."
 git tag $(python setup.py --version)
 git push --tags
+
+echo "Complete."
