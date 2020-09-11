@@ -13,5 +13,5 @@ if [ -n "$(git status --porcelain)" ]; then
   exit 1
 fi
 
-#git tag $(python setup.py --version)
-#git push --tags
+git tag $(python setup.py --version)
+git push --tags
