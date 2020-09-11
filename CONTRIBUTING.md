@@ -25,17 +25,18 @@ pip install tqdm
 pip install --user --upgrade twine
 ```
 
-**To compile:**
+**To compile for local development:**
 ```
 scripts/compile.sh
 ```
 
 **To push to pypi:**
-The GitHub CI takes care of deployments.
+The GitHub CI takes care of compilation and deployment to pypi.
  
-You just need to do deploy:
-1. Update version in [`setup.py`](setup.py)
-2. Run thew release script from the root of this project:
+You just need to the following to deploy:
+1. Update version in [`setup.py`](setup.py) 
+2. Commit your code.
+2. Run the release script from the root of this project:
 
 ```
 $ scripts/release.sh
