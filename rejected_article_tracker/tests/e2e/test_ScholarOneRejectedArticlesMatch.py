@@ -6,9 +6,11 @@ class TestScholarOneRejectedArticlesMatch(unittest.TestCase):
     def test_valid_lookup(self):
         print('This might take a while. Doing a lookup to crossref...')
         articles = [{
-            "Manuscript Title": "The Impact of Childhood Abuse on the Commercial Sexual Exploitation of Youth. A Systematic Review and Meta-Analysis ",
+            "Manuscript Title": """
+                The Impact of Childhood Abuse on the Commercial Sexual Exploitation of Youth. 
+                A Systematic Review and Meta-Analysis""",
             "Author Names": "De Vries, Ieke; Goggin, Kelly",
-            "Manuscript ID": "TVA-18-057",
+            "Manuscript ID": "TVA-18-057--CI_TEST_ENV",
             "Submission Date": "2018-07-20T13:29:58.999Z",
             "Decision Date": "1899-12-30T00:00:00.000Z",
             "Journal Name": "Trauma, Violence, & Abuse",

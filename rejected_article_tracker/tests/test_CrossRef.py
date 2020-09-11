@@ -8,7 +8,8 @@ class TestCrossRef(unittest.TestCase):
         article = {
             'text_sub_date': 'Some Value',
             'manuscript_title': 'Some Value',
-            'authors': 'Some+Value,Another+Value'
+            'manuscript_id': '1234',
+            'authors': 'Some+Value,Another+Value',
         }
         search_results = CrossRef(article=article, http_client=fake_http_client, sleep=None).search()
         self.assertTrue(len(search_results) > 2)
