@@ -27,10 +27,16 @@ pip install --user --upgrade twine
 
 **To compile:**
 ```
-python setup.py bdist_wheel
+scripts/compile.sh
 ```
 
 **To push to pypi:**
+The GitHub CI takes care of deployments.
+ 
+You just need to do deploy:
+1. Update version in [`setup.py`](setup.py)
+2. Run thew release script from the root of this project:
+
 ```
-python -m twine upload dist/*
+$ scripts/release.sh
 ```
