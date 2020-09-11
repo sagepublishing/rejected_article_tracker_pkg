@@ -26,9 +26,7 @@ jobs:
     name: Deploy latest tag to pypi
     needs: test_pkg
     runs-on: ubuntu-latest
-    env:
-      IS_TAG: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-    if: ${IS_TAG}
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     steps:
       - uses: actions/checkout@v2
       - uses: casperdcl/deploy-pypi@v1
