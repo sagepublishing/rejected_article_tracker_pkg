@@ -7,5 +7,11 @@
 #   $ scripts/release.sh
 # ```
 ##
-git tag $(python setup.py --version)
-git push --tags
+
+if [ -n "$(git status --porcelain)" ]; then
+  echo "!Error: Changes need to be committed or stashed first!"
+  exit 1
+fi
+
+#git tag $(python setup.py --version)
+#git push --tags
