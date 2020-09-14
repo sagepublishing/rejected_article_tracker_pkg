@@ -9,12 +9,22 @@ class Result:
     def to_dict(self):
         earliest_date = self.earliest_date()
         n_days = self.n_days_for_decision(earliest_date, self.original['decision_date'])
+
+        # title should be a list containing the title as a string
+        # however, sometimes appears as just a string
+        # on the off-chance that the inconsistency extends to other structures
+        # explicitly check for list, string and, if it's anything else, switch to empty string. 
+        self.title = self.winner['title'] if 'title' in self.winner else ''
+        self.title = self.title[0].strip() if type(self.title) == list else self.title
+        self.title = self.title.strip() if type(self.title) == str else ''
+
+
         result = {
             "submission_date": self.original["submission_date"].strftime("%Y-%m-%d"),
             "decision_date": self.decision_date(),
             "match_doi": self.winner['DOI'] if 'DOI' in self.winner else '',
             "match_type": self.winner['type'].strip() if 'type' in self.winner else '',
-            "match_title": self.winner['title'][0].strip(),
+            "match_title": self.title,
             "match_authors": ", ".join(self.winner['authors_list']),
             "match_publisher": self.winner["publisher"],
             "match_journal": self.journal_title(),
