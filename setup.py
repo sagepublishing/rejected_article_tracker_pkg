@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='rejected_article_tracker',
-    version='1.4.1',
+    version='1.5.0',
     scripts=['rejected_article_tracker/__init__.py'],
     author="Andy Hails",
     author_email="andy.hails@sagepub.co.uk",
@@ -29,5 +29,6 @@ setuptools.setup(
         'requests',
         'sklearn',
         'numpy',
+        'python-Levenshtein',
     ],
 )

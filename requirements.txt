@@ -6,3 +6,4 @@ requests
 sklearn
 numpy
 coverage
+python-Levenshtein
