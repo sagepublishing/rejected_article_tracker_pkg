@@ -38,13 +38,13 @@ from rejected_article_tracker import RejectedArticlesMatch
  
 articles = [
 {
-      "journal_name": "Trauma, Violence, & Abuse",
-      "manuscript_title": "The Impact of Childhood Abuse on the Commercial Sexual Exploitation of Youth. A Systematic Review and Meta-Analysis ",
-      "authors": "De Vries, Ieke; Goggin, Kelly",
-      "final_decision": "accept"
-      "decision_date": "2019-07-20T13:29:58.999Z", # This value is fabricated for the example
-      "submission_date": "2018-07-20T13:29:58.999Z",
-      "manuscript_id": "TVA-18-057",
+      "journal_name": "The International Journal of Robotics Research",
+      "manuscript_title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection ",
+      "authors": "Levine, Sergey; Pastor, Peter; Krizhevsky, Alex; Ibarz, Julian; Quillen, Deirdre",
+      "final_decision": ""
+      "decision_date": "2019-01-01T13:29:58.999Z", # some values fabricated for the example
+      "submission_date": "2018-10-01T13:29:58.999Z",
+      "manuscript_id": "ABC-18-070",
     }
 ]
 
@@ -127,14 +127,14 @@ articles = df[allowed_cols].to_dict('records')
 # Which might look like:
 """  
 articles = [
-   {
-      "Journal Name": "Trauma, Violence, & Abuse",
-      "Manuscript ID": "TVA-18-057",
-      "Manuscript Title": "The Impact of Childhood Abuse on the Commercial Sexual Exploitation of Youth. A Systematic Review and Meta-Analysis ",
-      "Author Names": "De Vries, Ieke; Goggin, Kelly",
-      "Submission Date": "2018-07-20T13:29:58.999Z",
-      "Decision Date": "1899-12-30T00:00:00.000Z",
-      "Accept or Reject Final Decision": ""
+{
+      "journal_name": "The International Journal of Robotics Research",
+      "manuscript_title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection ",
+      "authors": "Levine, Sergey; Pastor, Peter; Krizhevsky, Alex; Ibarz, Julian; Quillen, Deirdre",
+      "final_decision": ""
+      "decision_date": "2019-01-01T13:29:58.999Z", 
+      "submission_date": "2018-10-01T13:29:58.999Z",
+      "manuscript_id": "ABC-18-070",
     }
 ]
 """
