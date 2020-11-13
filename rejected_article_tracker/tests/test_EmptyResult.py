@@ -30,7 +30,7 @@ class TestEmptyResult(unittest.TestCase):
         self.assertEqual(res['match_crossref_cites'], 'No Match')
         self.assertEqual(res['match_rank'], 'No Match')
         self.assertEqual(res['match_total_decision_days'], 'No Match')
-        self.assertEqual(res['match_journal_acronym'], 'No Match')
+        
 
     def test__empty_Decision(self):
         original = {

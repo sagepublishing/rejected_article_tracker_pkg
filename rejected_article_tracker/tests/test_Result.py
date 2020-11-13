@@ -52,7 +52,7 @@ class TestResult(unittest.TestCase):
         self.assertEqual(res['match_crossref_cites'], 3)
         self.assertEqual(res['match_rank'], 1)
         self.assertEqual(res['match_total_decision_days'], -862)
-        self.assertEqual(res['match_journal_acronym'], 'TVA')
+        
 
     def test__missing_values(self):
         original = {

@@ -36,8 +36,7 @@ class Result:
             "match_crossref_score": self.winner['score'],
             "match_crossref_cites": self.winner['is-referenced-by-count'],
             "match_rank": self.winner['rank'],
-            "match_total_decision_days": n_days.days if hasattr(n_days, 'days') else 0,
-            "match_journal_acronym": self.journal_acronym(self.original['manuscript_id'])
+            "match_total_decision_days": n_days.days if hasattr(n_days, 'days') else 0
         }
         self.original.update(result)
         return self.original

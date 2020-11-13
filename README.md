@@ -36,15 +36,15 @@ from rejected_article_tracker import RejectedArticlesMatch
 # Create a list of article data dicts.
 # PLEASE NOTE: Due to reliance on 3rd party APIs, the more articles the longer it takes.
  
-articles = [
+articles = [ # some values fabricated for the example
 {
-      "journal_name": "The International Journal of Robotics Research",
-      "manuscript_title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection ",
-      "authors": "Levine, Sergey; Pastor, Peter; Krizhevsky, Alex; Ibarz, Julian; Quillen, Deirdre",
-      "final_decision": ""
-      "decision_date": "2019-01-01T13:29:58.999Z", # some values fabricated for the example
-      "submission_date": "2018-10-01T13:29:58.999Z",
-      "manuscript_id": "ABC-18-070",
+      "Journal Name": "The International Journal of Robotics Research",
+      "Manuscript Title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection ",
+      "Author Names": "Levine, Sergey; Pastor, Peter; Krizhevsky, Alex; Ibarz, Julian; Quillen, Deirdre",
+      "Accept or Reject Final Decision": "",
+      "Decision Date": "2019-01-01T13:29:58.999Z", 
+      "Submission Date": "2018-10-01T13:29:58.999Z",
+      "Manuscript ID": "ABC-18-070",
     }
 ]
 
@@ -128,13 +128,13 @@ articles = df[allowed_cols].to_dict('records')
 """  
 articles = [
 {
-      "journal_name": "The International Journal of Robotics Research",
-      "manuscript_title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection ",
-      "authors": "Levine, Sergey; Pastor, Peter; Krizhevsky, Alex; Ibarz, Julian; Quillen, Deirdre",
-      "final_decision": ""
-      "decision_date": "2019-01-01T13:29:58.999Z", 
-      "submission_date": "2018-10-01T13:29:58.999Z",
-      "manuscript_id": "ABC-18-070",
+      "Journal Name": "The International Journal of Robotics Research",
+      "Manuscript Title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection",
+      "Author Names": "Levine, Sergey; Pastor, Peter; Krizhevsky, Alex; Ibarz, Julian; Quillen, Deirdre",
+      "Accept or Reject Final Decision": "",
+      "Decision Date": "2019-01-01T13:29:58.999Z", 
+      "Submission Date": "2018-10-01T13:29:58.999Z",
+      "Manuscript ID": "ABC-18-070",
     }
 ]
 """
@@ -168,30 +168,29 @@ Example output when match found:
 ```json
 [
   {
-    "manuscript_id": "TVA-18-057",
-    "raw_manuscript_id": "TVA-18-057",
-    "journal_name": "Trauma, Violence, & Abuse",
-    "manuscript_title": "The Impact of Childhood Abuse on the Commercial Sexual Exploitation of Youth. A Systematic Review and Meta-Analysis ",
-    "submission_date": "2018-07-20",
-    "decision_date": "1899-12-30",
-    "authors": "Ieke+De Vries, Kelly+Goggin",
+    "manuscript_id": "ABC-18-070",
+    "raw_manuscript_id": "ABC-18-070",
+    "journal_name": "The International Journal of Robotics Research",
+    "manuscript_title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection",
+    "submission_date": "2018-10-01",
+    "decision_date": "2019-01-01",
+    "authors": "Levine, Sergey; Pastor, Peter; Krizhevsky, Alex; Ibarz, Julian; Quillen, Deirdre",
     "text_sub_date": "2018-07-20",
-    "match_doi": "10.1177/1524838018801332",
+    "match_doi": "10.1177/0278364917710318",
     "match_type": "journal-article",
-    "match_title": "The Impact of Childhood Abuse on the Commercial Sexual Exploitation of Youth: A Systematic Review and Meta-Analysis",
-    "match_authors": "Ieke+De Vries, Kelly E.+Goggin",
+    "match_title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection",
+    "match_authors": "Levine, Sergey; Pastor, Peter; Krizhevsky, Alex; Ibarz, Julian; Quillen, Deirdre",
     "match_publisher": "SAGE Publications",
-    "match_journal": "Trauma, Violence, & Abuse",
-    "match_pub_date": "2018-10-10",
-    "match_earliest_date": "2018-10-11",
+    "match_journal": "The International Journal of Robotics Research",
+    "match_pub_date": "2019-10-10",
+    "match_earliest_date": "2019-10-10",
     "match_similarity": 97,
     "match_one": true,
     "match_all": true,
     "match_crossref_score": 107.89555,
     "match_crossref_cites": 3,
     "match_rank": 1,
-    "match_total_decision_days": 43384,
-    "match_journal_acronym": "TVA"
+    "match_total_decision_days": 43384
   }
 ]
 ```
@@ -201,14 +200,14 @@ Example out when NO match found:
 ```json
 [
   {
-    "manuscript_id": "Sage-19-0492",
-    "raw_manuscript_id": "Sage-19-0492",
-    "journal_name": "SAGE Path",
-    "manuscript_title": "Reported Adverse Events with -lactam Antibiotics: Data Mining of the FDA Adverse Events Reporting System",
-    "submission_date": "2019-02-07",
-    "decision_date": "1899-12-30",
-    "authors": "Jielai+Xia, Liang+Tong, Ling+Wang, Wei+Ge, Chanjuan+Li, Chen+Li, Haixia+Hu, Fan+Li, Haona+Li",
-    "text_sub_date": "2019-02-07",
+    "manuscript_id": "ABC-18-070",
+    "raw_manuscript_id": "ABC-18-070",
+    "journal_name": "The International Journal of Robotics Research",
+    "manuscript_title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection",
+    "submission_date": "2018-10-01",
+    "decision_date": "2019-01-01",
+    "authors": "Levine, Sergey; Pastor, Peter; Krizhevsky, Alex; Ibarz, Julian; Quillen, Deirdre",
+    "text_sub_date": "2018-07-20",
     "final_decision": "",
     "match_doi": "No Match",
     "match_type": "No Match",
@@ -224,8 +223,7 @@ Example out when NO match found:
     "match_crossref_score": "No Match",
     "match_crossref_cites": "No Match",
     "match_rank": "No Match",
-    "match_total_decision_days": "No Match",
-    "match_journal_acronym": "No Match"
+    "match_total_decision_days": "No Match"
   }
 ]
 ``` 

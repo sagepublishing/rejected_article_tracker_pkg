@@ -23,8 +23,7 @@ class EmptyResult:
             "match_crossref_score": "No Match",
             "match_crossref_cites": "No Match",
             "match_rank": "No Match",
-            "match_total_decision_days": "No Match",
-            "match_journal_acronym": "No Match"
+            "match_total_decision_days": "No Match"
         }
         self.original.update(empty)
         return self.original
