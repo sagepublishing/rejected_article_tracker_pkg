@@ -5,9 +5,9 @@ from .ManuscriptIdRaw import ManuscriptIdRaw
 
 class ArticleItem:
 
-    def __init__(self, items):
+    def __init__(self, article_dict):
         """
-        :param items: dict
+        :param article_dict: dict
             manuscript_id: str
             journal_name: str
             manuscript_title: str
@@ -18,29 +18,29 @@ class ArticleItem:
                                     e.g.  "De Vries, Ieke; Goggin, Kelly"
             final_decision: str
         """
-        submission_date = self.__required(items, 'submission_date')
+        submission_date = self.__required(article_dict, 'submission_date')
 
         if not isinstance(submission_date, pd.Timestamp):
             raise ValueError('"submission_date" needs to be a valid date')
 
-        self.items = {
-            'manuscript_id': self.__required(items, 'manuscript_id'),
-            'raw_manuscript_id': ManuscriptIdRaw(items['manuscript_id']).id(),
-            'journal_name': self.__required(items, 'journal_name'),
-            'manuscript_title': self.__required(items, 'manuscript_title'),
+        self.article_dict = {
+            'manuscript_id': self.__required(article_dict, 'manuscript_id'),
+            'raw_manuscript_id': ManuscriptIdRaw(article_dict['manuscript_id']).id(),
+            'journal_name': self.__required(article_dict, 'journal_name'),
+            'manuscript_title': self.__required(article_dict, 'manuscript_title'),
             'submission_date': submission_date,
-            'decision_date': items['decision_date'],
-            'authors': AuthorNames(items['authors']).names(),
-            'text_sub_date': items['submission_date'].strftime("%Y-%m-%d"),
-            'final_decision': items['final_decision']
+            'decision_date': article_dict['decision_date'],
+            'authors': AuthorNames(article_dict['authors']).names(),
+            'text_sub_date': article_dict['submission_date'].strftime("%Y-%m-%d"),
+            'final_decision': article_dict['final_decision']
         }
 
     def to_dict(self):
-        return self.items
+        return self.article_dict
 
     @staticmethod
-    def __required(items, name):
-        if not items[name]:
+    def __required(article_dict, name):
+        if not article_dict[name]:
             raise ValueError('field "' + name + '" required')
-        return items[name]
+        return article_dict[name]
 
