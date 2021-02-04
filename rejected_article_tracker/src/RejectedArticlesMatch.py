@@ -10,6 +10,8 @@ from .BestCandidate import BestCandidate
 from .Result import Result
 from .EmptyResult import EmptyResult
 
+from .ML.config import Config as mlconfig
+
 
 class RejectedArticlesMatch:
 
@@ -27,8 +29,16 @@ class RejectedArticlesMatch:
         self.config = config
         self.results = results
 
-        with open(os.path.join(os.path.dirname(__file__)) + '/lr_model', 'rb') as f:
-            self.clf = pickle.load(f)
+        # if we have created a new model using the training functions
+        # then this will 
+        new_model_path = mlconfig.new_logreg_model_loc
+        if os.path.exists(new_model_path):
+            with open(new_model_path, 'rb') as f:
+                self.clf = pickle.load(f)
+        else:
+            with open(os.path.join(os.path.dirname(__file__)) + '/lr_model', 'rb') as f:
+                self.clf = pickle.load(f)
+        
 
     def match(self) -> list:
         """
@@ -48,8 +58,8 @@ class RejectedArticlesMatch:
                                   sleep=time.sleep,
                                   email=self.email).search()
 
-        search_results = [SearchResult(details=search_results[i],
-                                       match_article=article,
+        search_results = [SearchResult(match_article=search_results[i],
+                                       query_article=article,
                                        clf=self.clf,
                                        rank=i + 1).to_dict() for i in range(len(search_results))]
 
