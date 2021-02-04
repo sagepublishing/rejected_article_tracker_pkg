@@ -4,3 +4,6 @@ dist/
 __pycache__/
 .coverage
 htmlcov/
+*.log
+*.vscode
+*.ipynb-checkpoints
