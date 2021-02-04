@@ -1,13 +1,33 @@
 from .SearchProvider import SearchProvider
 import json
-
+import os
+import time
 
 class CrossRef(SearchProvider):
-    def __init__(self, article: dict, http_client, sleep, email=''):
+    def __init__(self, article: dict, http_client, sleep, email='', rows=10):
         self.article = article
         self.http_client = http_client
         self.sleep = sleep
         self.email = email
+        self.rows = rows
+
+    def validate_response(self, response):
+
+        good_response = False
+        if response.status_code==200:
+            good_response = True
+        else:
+            good_response = False
+
+        try:
+            js_resp = response.json()
+            if type(js_resp)==dict and 'message' in response.json() and 'items' in js_resp['message']:
+                good_response=True
+            else:
+                good_response = False
+        except:
+            good_response = False
+        return good_response
 
     def search(self) -> list:
         """
@@ -17,14 +37,24 @@ class CrossRef(SearchProvider):
         payload = {
             'filter': 'from-created-date:{}'.format(self.article['text_sub_date']),
             'query.bibliographic': self.article['manuscript_title'],
-            'query.author': self.article['authors'].split(', '),
-            'rows': 10
+            'query.author': self.article['authors'],#.split(', '),
+            'rows': self.rows
         }
 
         headers = {
             'User-Agent': "User {}: SAGE article lookup for article {}".format(self.email, self.article['manuscript_id']),
-            'mailto': 'andy.hails@sagepub.co.uk'
+            'mailto': os.environ['MY_EMAIL']
         }
-        response = self.http_client.get(address, params=payload, headers=headers)
-
-        return response.json()['message']['items']
+        response = self.http_client.get(address, 
+                                        params=payload, 
+                                        headers=headers)
+        # optional delay to avoid overloading the API
+        # as long as you stay below 50 requests per second,
+        # you don't need this delay
+        # response_time = response.elapsed.total_seconds()
+        # time.sleep(int(response_time))
+        if self.validate_response(response)==True:
+            items = response.json()['message']['items']
+            return items
+        else:
+            return None
