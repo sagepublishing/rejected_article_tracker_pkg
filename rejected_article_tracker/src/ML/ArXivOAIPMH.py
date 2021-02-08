@@ -1,6 +1,7 @@
 import os 
 import glob
 import datetime
+from tqdm import tqdm
 
 from oaiharvest.harvest import DirectoryOAIHarvester
 from oaiharvest.metadata import DefaultingMetadataRegistry, XMLMetadataReader
@@ -26,7 +27,7 @@ class ArXivOAIPMH():
             logger.warning('Insufficient training data from ArXiv. Pulling data again according to parameters in config.')
             self.acquire_oai_pmh()
         else:
-            logger.debug('Sufficient OAI-PMH data found.')
+            logger.debug('Sufficient OAI-PMH data found. Loading from files.')
             
     def get_xml_filepaths(self):
         """
@@ -106,7 +107,7 @@ class ArXivOAIPMH():
         Acquire if directory empty
         """
         xml_filepaths = self.get_xml_filepaths()
-        for xml_filepath in xml_filepaths:
+        for xml_filepath in tqdm(xml_filepaths):
             with open(xml_filepath,'r') as f:
                 xml_data = f.read()
                 yield xml_data
