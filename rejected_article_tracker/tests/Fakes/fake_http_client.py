@@ -11,6 +11,7 @@ class FakeResponse:
 
     def __init__(self, elapsed):
         self.elapsed = elapsed
+        self.status_code = 200
 
     def json(self):
         return {
@@ -24,8 +25,8 @@ class FakeResponse:
         }
 
 
-
 def get(address, params, headers):
     seconds = 1.0 if params['query.bibliographic'] != 'DELAYED' else 11
     elapsed = FakeElapsedTime(seconds)
     return FakeResponse(elapsed=elapsed)
+

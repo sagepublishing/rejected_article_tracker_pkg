@@ -15,6 +15,7 @@ class TestResult(unittest.TestCase):
             'DOI': '10.1016/j.jnt.2017.08.038',
             'type': 'journal-article',
             'title': ['New data on the Opheliidae (Annelida) from Lizard Island (Great Barrier Reef, Australia)'],
+            'full_title': 'New data on the Opheliidae (Annelida) from Lizard Island (Great Barrier Reef, Australia)',
             'authors_list': ['Andy Hails', 'Adam Day'],
             'publisher': 'SAGE',
             'issued': {'date-parts': [[2020, 4, 1]], 'timestamp': 1585730172000},
@@ -22,8 +23,8 @@ class TestResult(unittest.TestCase):
             'indexed': {'date-parts': [[2018, 9, 1]], 'timestamp': 1535790972000},
             'deposited': {'date-parts': [[2018, 9, 1]], 'timestamp': 1535790972000},
             'similarity': 97,
-            'author_match_one': True,
-            'author_match_all': True,
+            'author_match_one': 1,
+            'author_match_all': 1,
             'score': 95.2,
             'is-referenced-by-count': 3,
             'rank': 1,
@@ -39,7 +40,7 @@ class TestResult(unittest.TestCase):
         self.assertEqual(res['submission_date'], '2020-08-01')
         self.assertEqual(res['match_doi'], winner['DOI'])
         self.assertEqual(res['match_type'], winner['type'])
-        self.assertEqual(res['match_title'], winner['title'][0])
+        self.assertEqual(res['match_title'], winner['full_title'])
         self.assertEqual(res['match_authors'], 'Andy Hails, Adam Day')
         self.assertEqual(res['match_publisher'], 'SAGE')
         self.assertEqual(res['match_journal'], 'Taxes and Taxation Trends')
@@ -65,12 +66,13 @@ class TestResult(unittest.TestCase):
             'DOI': '10.1016/j.jnt.2017.08.038',
             'type': 'journal-article',
             'title': ['New data on the Opheliidae (Annelida) from Lizard Island (Great Barrier Reef, Australia)'],
+            'full_title': 'New data on the Opheliidae (Annelida) from Lizard Island (Great Barrier Reef, Australia)',
             'authors_list': ['Andy Hails', 'Adam Day'],
             'publisher': 'SAGE',
             'issued': {'date-parts': [[2018, 9, 1]], 'timestamp': 1535790972000},
             'similarity': 97,
-            'author_match_one': True,
-            'author_match_all': True,
+            'author_match_one': 1,
+            'author_match_all': 1,
             'score': 95.2,
             'is-referenced-by-count': 3,
             'rank': 1,

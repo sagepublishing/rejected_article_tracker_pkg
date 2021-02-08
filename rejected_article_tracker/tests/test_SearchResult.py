@@ -1,30 +1,48 @@
 import unittest
+
+
 from ..src.SearchResult import SearchResult
 from .Fakes import fake_classifier
 
 
+def make_dummy_search_result():
+    return SearchResult(
+            query_article = {},
+            match_article = {},
+            clf = None,
+            rank = 0
+        )
+
+
 class TestSearchResult(unittest.TestCase):
 
+    
     def test__match_names__any(self):
-        match_authors = 'Andy Carlos+Hails, Helen+King, Adam+Day, D+Harris'
-        authors = ['Helen+King', 'Adam+Day', 'D+Harris']
-        matches = SearchResult.match_names(match_authors=match_authors, authors=authors)
-        self.assertTrue(matches['author_match_one'])
-        self.assertFalse(matches['author_match_all'])
+        query_authors = 'Andy Carlos+Hails, Helen+King, Adam+Day, D+Harris'
+        match_authors = ['Helen+King', 'Adam+Day', 'D+Harris']
+        dummy_search_result = make_dummy_search_result()
+        matches = dummy_search_result.match_names(match_authors=match_authors, 
+                                                query_authors=query_authors)
+        self.assertEqual(matches['author_match_one'],1)
+        self.assertEqual(matches['author_match_all'],0)
 
     def test__match_names__all(self):
-        match_authors = 'Andy Carlos+Hails, Helen+King, Adam+Day, D+Harris'
-        authors = ['Helen+King', 'Adam+Day', 'D+Harris', 'Andy Carlos+Hails']
-        matches = SearchResult.match_names(match_authors=match_authors, authors=authors)
-        self.assertTrue(matches['author_match_one'])
-        self.assertTrue(matches['author_match_all'])
+        query_authors = 'Andy Carlos+Hails, Helen+King, Adam+Day, D+Harris'
+        match_authors = ['Helen+King', 'Adam+Day', 'D+Harris', 'Andy Carlos+Hails']
+        dummy_search_result = make_dummy_search_result()
+        matches = dummy_search_result.match_names(match_authors=match_authors, 
+                                                 query_authors=query_authors)
+        self.assertEqual(matches['author_match_one'],1)
+        self.assertEqual(matches['author_match_all'],1)
 
     def test__match_names__none(self):
-        match_authors = 'Simon+Jones'
-        authors = ['Helen+King', 'Adam+Day', 'D+Harris']
-        matches = SearchResult.match_names(match_authors=match_authors, authors=authors)
-        self.assertFalse(matches['author_match_one'])
-        self.assertFalse(matches['author_match_all'])
+        query_authors = 'Simon+Jones'
+        match_authors = ['Helen+King', 'Adam+Day', 'D+Harris']
+        dummy_search_result = make_dummy_search_result()
+        matches = dummy_search_result.match_names(match_authors=match_authors, 
+                                                 query_authors=query_authors)
+        self.assertEqual(matches['author_match_one'],0)
+        self.assertEqual(matches['author_match_all'],0)
 
     def test__match_names__fuzy(self):
         match_authors = "Ieke+De Vries; Kelly+Goggin"
@@ -64,11 +82,11 @@ class TestSearchResult(unittest.TestCase):
         self.assertTrue(res[1], '+Connery')
 
     def test__classifier(self):
-        match_article = {
+        query_article = {
             'authors': 'Andy Carlos+Hails, Helen+King, Adam+Day, D+Harris',
             'manuscript_title': 'Some Manuscript title'
         }
-        details = {
+        match_article = {
             'title': 'Some manuscript title',
             'author': [{
                 'given': 'Andy',
@@ -78,6 +96,7 @@ class TestSearchResult(unittest.TestCase):
             }],
             'score': '76'
         }
-        candidate = SearchResult(details=details, match_article=match_article, clf=fake_classifier, rank=10)
+        candidate = SearchResult(query_article=query_article, match_article=match_article, clf=fake_classifier, rank=10)
         res = candidate.to_dict()
         self.assertEqual(res['classifier_score'], 99.999)
+
