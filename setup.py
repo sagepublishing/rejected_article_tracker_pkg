@@ -1,7 +1,7 @@
 import setuptools
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+# with open("README.md", "r") as fh:
+#     long_description = fh.read()
 
 setuptools.setup(
     name='rejected_article_tracker',
@@ -10,7 +10,7 @@ setuptools.setup(
     author="Andy Hails",
     author_email="andy.hails@sagepub.co.uk",
     description="Utility package to track if a journal article has been published elsewhere.",
-    long_description=long_description,
+    long_description='',#long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/sagepublishing/rejected_article_tracker_pkg",
     packages=setuptools.find_packages(),
