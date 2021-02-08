@@ -20,9 +20,14 @@ class FilteredArticles:
         df = pd.DataFrame(articles)
         df = df[df['manuscript_id'] != 'draft']
 
-        df['raw_manuscript_id'] = df['manuscript_id'].map(lambda x: ManuscriptIdRaw(x).id())
-        df['submission_date'] = df['submission_date'].map(lambda x: pd.to_datetime(x, errors='raise', utc=True))
+        df.loc[:,'raw_manuscript_id'] = df['manuscript_id'].map(lambda x: ManuscriptIdRaw(x).id())
+        df.loc[:,'submission_date'] = df['submission_date'].map(lambda x: pd.to_datetime(x, errors='raise', utc=True))
+        
+        # TODO - get to the bottom of this. Received wisdom is that column updates should
+        # be in the style above: df.loc[:,'column_name']. However, this breaks
+        # unit tests at the next line. So switched to df['column_name'] here
         df['decision_date'] = df['decision_date'].map(lambda x: pd.to_datetime(x, errors='coerce', utc=True))
+        
         df = df.dropna(subset=['manuscript_title', 'authors'])
         df = df.drop_duplicates(subset=['raw_manuscript_id'], keep='last')
         df = df[df['final_decision'] != 'Accept']
