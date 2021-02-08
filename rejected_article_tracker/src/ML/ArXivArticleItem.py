@@ -2,6 +2,16 @@ import pandas as pd
 from .ArXivAuthorNames import ArXivAuthorNames
 from .ArXivManuscriptIdRaw import ArXivManuscriptIdRaw
 
+"""
+This class simply takes an arxiv oai-pmh record and coverts it into a
+format expected by the CrossRef class in ..src 
+This way, we can perform searches through the same infrastructure as the 
+tracker normally uses. 
+
+Note that, when we build training data, we use a different class to
+handle arxiv oai-pmh records. 
+"""
+
 
 class ArXivArticleItem:
 
@@ -20,12 +30,14 @@ class ArXivArticleItem:
         """
         created_date = self.__required(items, 'created')
         created_date = pd.Timestamp(created_date)
+        _id = self.__required(items, 'id')
+        raw_id = ArXivManuscriptIdRaw(_id).id()
         if not isinstance(created_date, pd.Timestamp):
             raise ValueError('"created" needs to be a valid date')
 
         self.items = {
-            'manuscript_id': self.__required(items, 'id'),
-            'raw_manuscript_id': ArXivManuscriptIdRaw(items['id']).id(),
+            'manuscript_id': raw_id,
+            'raw_manuscript_id': raw_id,
             # 'journal_name': self.__required(items, 'journal_name'),
             'manuscript_title': self.__required(items, 'title'),
             'submission_date': created_date,
