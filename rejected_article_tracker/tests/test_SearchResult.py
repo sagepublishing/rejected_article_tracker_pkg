@@ -96,7 +96,10 @@ class TestSearchResult(unittest.TestCase):
             }],
             'score': '76'
         }
-        candidate = SearchResult(query_article=query_article, match_article=match_article, clf=fake_classifier, rank=10)
+        candidate = SearchResult(query_article=query_article, 
+                                match_article=match_article, 
+                                clf=fake_classifier, 
+                                rank=10)
         res = candidate.to_dict()
         self.assertEqual(res['classifier_score'], 99.999)
 

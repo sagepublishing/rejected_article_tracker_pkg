@@ -32,7 +32,7 @@ class CrossRefUtils:
         converts a list into a list of lists each with max length == n
         '''
         # For item i in a range that is a length of l,
-        for i in range(0, len(l), n):
+        for i in tqdm(list(range(0, len(l), n))):
             # Create an index range for l of n items:
             yield l[i:i+n]
 
@@ -170,23 +170,22 @@ class CrossRefUtils:
         Yields output json for each batch for analysis/caching.
         -- Note that batch_size==100 seems to be a limit --
         '''
+        pool_size = 10
         valid_dois = [doi for doi in dois if self.validate_doi(doi)==True]
         dois_found = set()
-        # make generator of lists
-
-        pool_size = 10
-
+        
         # create lists of len 100
         doi_batches = list(self.chunks(valid_dois,self.batch_size))
-        # create lists of len 50 OF lists of len 100
-        chunked_doi_batches = list(self.chunks(doi_batches,pool_size))
 
         logger.debug('Pulling data from DOIs in {} batches of size {} split into pools of size {}'.format(
                                                     len(doi_batches),
                                                     self.batch_size,
                                                     pool_size))
+
+        # create lists of len 50 OF lists of len 100
+        chunked_doi_batches = list(self.chunks(doi_batches,pool_size))
         
-        for doi_batch_pool in tqdm(chunked_doi_batches):
+        for doi_batch_pool in chunked_doi_batches:
             cr_data_generator = self.multi(CrossRefUtils().get_doi_batch, 
                                             doi_batch_pool,
                                             pool_size)

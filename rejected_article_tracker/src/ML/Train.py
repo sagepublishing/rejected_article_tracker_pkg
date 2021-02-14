@@ -15,24 +15,13 @@ from .config import Config as config
 import logging
 logger = logging.getLogger(__name__)
 
-class LogReg():
+class LogReg:
 
     def get_data(self, df):
         
-        
-        predictors = [
-                    'similarity',
-                    'author_match_all',
-                    # TODO - you can't use score because the
-                    # DOI lookups all default to score ==1.0
-                    # potentially limit data to results where we have a score!=1?
-                    # 'score',
-                    # 'rank',
-                    'n_auths_query',
-                    'correct_yn'
-                    ]
-        dfnum = df[predictors].apply(pd.to_numeric, args=('coerce',)).dropna()
-        y = dfnum.pop('correct_yn').values
+        predictor_cols = config.predictor_cols
+        dfnum = df[predictor_cols].apply(pd.to_numeric, args=('coerce',)).dropna()
+        y = dfnum.pop(config.target_col).values
         X = dfnum.values
         return X, y
 
@@ -71,8 +60,6 @@ class LogReg():
         gs.fit(X_train,y_train)
         
         return gs.best_estimator_
-
-    
 
     def best_model_to_file(self):
         # TODO - train on the split data

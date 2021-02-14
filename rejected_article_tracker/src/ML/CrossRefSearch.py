@@ -5,6 +5,7 @@ import time
 import requests
 import datetime
 import json
+from tqdm import tqdm
 
 from .ArXivTrainingData import ArXivTrainingData
 from .ArXivArticleItem import ArXivArticleItem
@@ -89,8 +90,6 @@ class CrossRefSearch():
             line = {article_id:search_results}
             with open(config.crossref_search_jsonl_dataloc, 'a') as f:
                 f.write(json.dumps(line) + "\n")
-            if i>0 and i%1000==0:
-                logger.debug('{} searches complete. Results written to file'.format(i))
 
 
     def multi(self,f,iterable):

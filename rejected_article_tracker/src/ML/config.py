@@ -46,3 +46,19 @@ class Config:
     # this will be approximately the number of preprints added to arXiv
     # since 2007.
     n_recs_from_oai_pmh = 200000
+
+
+    predictor_cols = [
+        
+        'similarity',
+        'author_match_all',
+        # NOTE - you can't use score because the
+        # DOI lookups all default to score ==1.0
+        # potentially limit data to results where we have a score!=1?
+        # 'score',
+        # 'rank',
+        'n_auths_query'
+        
+    ]
+
+    target_col = 'correct_yn'

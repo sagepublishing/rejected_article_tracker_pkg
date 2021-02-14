@@ -99,7 +99,7 @@ class CleanTrainingData:
         """
         Attempts to identify and remove rows where DOI contains a typo
         """
-        # TODO - seeing an error on Levenshtein here, but it seems to work if I try it in terminal?
+        # NOTE - VS Code is showing an error on Levenshtein here, but it works
         df['doi_sim'] = [Levenshtein.distance(row['query_doi'],row['DOI']) for i,row in df.iterrows()]
         typo_candidates = df[(df['correct_yn']==0) & (df['doi_sim']<3)] 
 

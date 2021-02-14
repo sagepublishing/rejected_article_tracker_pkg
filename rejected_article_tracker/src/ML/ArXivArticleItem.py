@@ -36,7 +36,7 @@ class ArXivArticleItem:
             raise ValueError('"created" needs to be a valid date')
 
         self.items = {
-            'manuscript_id': raw_id,
+            'manuscript_id': _id,
             'raw_manuscript_id': raw_id,
             # 'journal_name': self.__required(items, 'journal_name'),
             'manuscript_title': self.__required(items, 'title'),

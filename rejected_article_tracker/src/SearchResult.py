@@ -3,6 +3,7 @@ import numpy as np
 from gensim.parsing.preprocessing import preprocess_string, strip_tags
 from gensim.utils import deaccent
 
+from .ML.config import Config as mlconfig
 
 
 class SearchResult:
@@ -20,6 +21,8 @@ class SearchResult:
 
     def to_dict(self) -> dict:
         match_article = self.match_article
+        # add # of authors on the query article. This might affect model confidence?
+        match_article['n_auths_query'] = len(self.query_article['authors'].split(','))
         match_article['authors_list'] = self.authors_list(match_article['author'])
         match_article.update(self.match_names(
                                         query_authors=self.query_article['authors'], 
@@ -76,14 +79,9 @@ class SearchResult:
         }
 
     def classify(self, match_article: dict):
-        predictors = [
-            match_article['similarity'],
-            match_article['author_match_all'],
-            match_article['score'],
-            self.rank,
-            len(self.match_article['authors_list'])
-        ]
+        predictor_cols = mlconfig.predictor_cols
+        predictors = [match_article[x] for x in predictor_cols]
         X = np.array([float(x) for x in predictors])
-        clf_scores = self.clf.predict_proba(np.reshape(X, (1, 5)))
+        clf_scores = self.clf.predict_proba(np.reshape(X, (1, len(predictor_cols))))
         score = clf_scores[0][1]
         return score
