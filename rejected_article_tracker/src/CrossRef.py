@@ -48,11 +48,7 @@ class CrossRef(SearchProvider):
         response = self.http_client.get(address, 
                                         params=payload, 
                                         headers=headers)
-        # optional delay to avoid overloading the API
-        # as long as you stay below 50 requests per second,
-        # you don't need this delay
-        # response_time = response.elapsed.total_seconds()
-        # time.sleep(int(response_time))
+        
         if self.validate_response(response)==True:
             items = response.json()['message']['items']
             return items
