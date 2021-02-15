@@ -20,8 +20,10 @@ class LogReg:
     def get_data(self, df):
         
         predictor_cols = config.predictor_cols
-        dfnum = df[predictor_cols].apply(pd.to_numeric, args=('coerce',)).dropna()
-        y = dfnum.pop(config.target_col).values
+        target_col = config.target_col
+        all_cols = predictor_cols+[target_col]
+        dfnum = df[all_cols].apply(pd.to_numeric, args=('coerce',)).dropna()
+        y = dfnum.pop(target_col).apply(pd.to_numeric, args=('coerce',)).values
         X = dfnum.values
         return X, y
 

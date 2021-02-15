@@ -54,7 +54,7 @@ class TrainingData():
 
     def load_gen_training_df(self):
         if os.path.exists(config.training_dataloc):
-            df = pd.read_csv(config.training_dataloc) #, dtype=str)
+            df = pd.read_csv(config.training_dataloc, error_bad_lines=False) #, dtype=str)
             logger.debug('Training data found. Shape:{}'.format(df.shape))
         else:
             logger.debug('Training data not found. Generating from available data.')
@@ -64,7 +64,7 @@ class TrainingData():
 
     def load_gen_clean_training_df(self):
         if os.path.exists(config.clean_training_dataloc):
-            df = pd.read_csv(config.clean_training_dataloc) #, dtype=str)
+            df = pd.read_csv(config.clean_training_dataloc, error_bad_lines=False) #, dtype=str)
             logger.debug('Clean training data found. Shape:{}'.format(df.shape))
         else:
             logger.debug('Clean training data not found. Generating from available data.')

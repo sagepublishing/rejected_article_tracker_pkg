@@ -20,7 +20,8 @@ class Config:
 
 
     # model locations
-    ml_model_dir = os.path.join(user_home_dir,'rejected_article_tracker/models')
+    file_dir = os.path.dirname(__file__)
+    ml_model_dir = os.path.join(file_dir,'small_models')
     old_logreg_model_loc = os.path.join(ml_model_dir, 'lr_model')
     new_logreg_model_loc = os.path.join(ml_model_dir, 'lr_model_new')
      
