@@ -3,7 +3,7 @@ import datetime
 
 
 class Config:
-    myemail = os.environ['MY_EMAIL'] or ''
+    myemail = os.getenv('MY_EMAIL', '')
     user_home_dir = os.path.expanduser('~')
     
     # ml code location
