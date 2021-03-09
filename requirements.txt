@@ -6,4 +6,5 @@ requests
 sklearn
 numpy
 coverage
+gensim
 python-Levenshtein
