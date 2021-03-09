@@ -23,9 +23,9 @@ Over 3m peer-reviewed research papers are published in academic journals each ye
 
 [CrossRef](https://www.crossref.org/about/) is a not-for-profit organisation which maintains a large dataset of metadata describing the majority of published peer-reviewed research papers. The SAGE rejected article tracker extracts knowledge from that dataset by analysing data from the [CrossRef REST API](https://github.com/CrossRef/rest-api-doc). 
 
-Given metadata for a rejected article, the rejected article tracker will, 
-- search CrossRef's API to retrieve a list of possible matches and 
-- select the most likely correct result from that list using simple machine learning.
+Given metadata for a rejected article, the rejected article tracker will:
+* search CrossRef's API to retrieve a list of possible matches and 
+* select the most likely correct result from that list using simple machine learning.
 
 The tracker is available as [a Python package](https://github.com/ad48/rejected_article_tracker_pkg) with [a temporary live demonstration](https://rejectedarticlestorage.z6.web.core.windows.net/) scheduled to run until mid-2021.
 
