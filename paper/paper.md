@@ -29,15 +29,33 @@ Given metadata for a rejected article, the rejected article tracker will:
 
 * select the most likely correct result from that list using simple machine learning.
 
+The tracker can be used to track rejected articles, or to perform DOI-resolution for other reasons, such as assigning DOIs to ArXiv preprints in order to connect the preprints to their published versions.
+
 The tracker is available as [a Python package](https://github.com/ad48/rejected_article_tracker_pkg) with [a temporary live demonstration](https://rejectedarticlestorage.z6.web.core.windows.net/) scheduled to run until mid-2021.
 
 # Statement of need
 
 Rejected article tracking has been performed in a number of research settings [@Wijnhoven2010; @Docherty2017; @Citerio2018; @Chung2020]. Typically, this is done by manually searching for rejected articles over a small dataset. However, commercial rejected article trackers are available [@HighWire; @Incorvia2015].
 
-As the market for journal publications continues to grow at a rapid pace, it is critical that publishing houses are able to reach sound publication decisions.
+To date, a lack of open source tools has prevented easy acquisition of data on rejected articles for analysis.
 
-Being able to track rejected articles can, for example, allow researchers working with publishing houses to see which of their rejected articles have been published elsewhere, and which have been cited. This is valuable feedback which can help publishers improve the quality of research assessment offered by their peer-review process. Furthermore, preventing unnecessary rejections of acceptable content reduces the publisher's costs as well as those of the academy (who as authors, referees and editors volunteer a significant amount of time to the peer-review process).
+Data acquired by rejected article tracking makes various insights into the peer-review and publication processes possible.
+
+1. It is possible to measure the rate at which rejected articles are published and cited. This shows the effectiveness of journal peer-review in identifying (or failing to identify) flaws in research.
+
+2. Instances of author-misconduct can be identified and studied. 
+
+    - Dual submission (where an author has submitted the same article to multiple journals simultaneously) can be detected automatically. 
+
+    - When a rejected article has been later published _and then retracted_ due to fraud or other misconduct, researchers can identify failings in peer-review that may have missed obvious signs of misconduct.
+
+3. We speculate that further, as yet unstudied, forms of misconduct can be investigated with data retrieved this way.
+
+    - Research articles may be edited fraudulently between rejection by one journal and acceptance by another. This is a very rare occurrence, but it may be possible to identify and study such cases.
+
+    - Often, research articles are rejected due to significant fundamental flaws in the science they present. If an author goes on to publish such work following rejection for this reason, it may simply be because the author disagreed that there were fundamental flaws in the work. However, it is possible that the author does so with deliberate intent to publish flawed work. This form of misconduct has never been studied and rejected article tracking is one step in doing so. 
+
+As the rate of creation of research manuscripts continues to grow at a rapid pace, the need to understand the peer-review process, improve efficiencies and tackle abuse becomes all the more pressing. 
 
 
 # Acknowledgements
