@@ -44,12 +44,12 @@ class ArXivOAIPMH:
         """
         Ensures that the correct directories exist for the ML data
         """
-        ml_data_location = config.ml_data_dir
-        if not os.path.exists(ml_data_location):
-            os.mkdir(ml_data_location)
-        data_location = config.oai_pmh_dataloc
-        if not os.path.exists(data_location):
-            os.mkdir(data_location)
+        data_dirs=[config.main_data_dir,
+                    config.ml_data_dir,
+                    config.oai_pmh_dataloc]
+        for data_dir in data_dirs:
+            if not os.path.exists(data_dir):
+                os.mkdir(data_dir)       
 
     def acquire_oai_pmh(self, datadir = config.oai_pmh_dataloc, nRecs = config.n_recs_from_oai_pmh):
         """

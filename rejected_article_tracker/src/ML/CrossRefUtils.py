@@ -183,7 +183,8 @@ class CrossRefUtils:
                                                     pool_size))
 
         # create lists of len 50 OF lists of len 100
-        chunked_doi_batches = list(self.chunks(doi_batches,pool_size))
+        # chunked_doi_batches = list(self.chunks(doi_batches,pool_size))
+        chunked_doi_batches = self.chunks(doi_batches,pool_size)
         
         for doi_batch_pool in chunked_doi_batches:
             cr_data_generator = self.multi(CrossRefUtils().get_doi_batch, 

@@ -7,10 +7,13 @@ class Config:
     user_home_dir = os.path.expanduser('~')
     
     # ml code location
-    ml_dir = os.path.abspath('rejected_article_tracker/src/ML')
+    
+
+    ml_dir = os.path.abspath('.rejected_article_tracker/src/ML')
 
     # data_locations
-    ml_data_dir = os.path.join(user_home_dir,'rejected_article_tracker/data')
+    main_data_dir = os.path.join(user_home_dir,'rejected_article_tracker')
+    ml_data_dir = os.path.join(main_data_dir,'data')
     oai_pmh_dataloc = os.path.join(ml_data_dir,'oai_pmh_data')
     crossref_doi_dataloc = os.path.join(ml_data_dir,'cr_doi_results.jsonl')
     crossref_search_dataloc = os.path.join(ml_data_dir,'cr_search_results.json')
