@@ -49,33 +49,42 @@ class SearchResult:
         Takes a string as input, removes accents and 
         converts to lowercase
         """
-        name = deaccent(name)
-        name = name.lower()
-        first_name = name[0]
-        last_name = name[name.rfind('+') + 1:]
-        first_name = first_name.replace('-','').replace('\'','').replace(' ','')
-        first_init = first_name[0]
-        last_name = last_name.replace('-','').replace('\'','').replace(' ','')
-        name = (first_init, last_name)
-        return name
+        if type(name)==str and len(name)>0:
+            name = deaccent(name)
+            name = name.lower()
+            first_name = name[0]
+            if '+' in name:
+                last_name = name[name.rfind('+') + 1:]
+            else:
+                last_name = name[1:]
+            first_name = first_name.replace('.','').replace('-','').replace('\'','').replace(' ','')
+            first_init = first_name[0] if len(first_name)>0 else ''
+            last_name = last_name.replace('.','').replace('-','').replace('\'','').replace(' ','')
+            name = (first_init, last_name)
+            return name
 
     # @staticmethod
     def match_names(self, match_authors, query_authors):
-        names1 = list()
-        for name in query_authors.split(', '):
-            name = self.pre_process_name(name)
-            names1.append(name)
+        """
+        Checks to see if one or all names in the query article are found
+        in the match article returned by the search.
+        """
+        query_names = list()
+        for query_name in query_authors.split(','):
+            query_name = query_name.strip()
+            query_name = self.pre_process_name(query_name)
+            query_names.append(query_name)
         
-        names2 = list()
-        for name in match_authors:
-            name = self.pre_process_name(name)
-            names2.append(name)
+        match_names = list()
+        for match_name in match_authors:
+            match_name = self.pre_process_name(match_name)
+            match_names.append(match_name)
         
-        names2 = set(names2)
+        match_names_set = set(match_names)
 
         return {
-            'author_match_one': int(any(name in names2 for name in names1)),
-            'author_match_all': int(all(name in names2 for name in names1)),
+            'author_match_one': int(any(query_name in match_names_set for query_name in query_names)),
+            'author_match_all': int(all(query_name in match_names_set for query_name in query_names)),
         }
 
     def classify(self, match_article: dict):
