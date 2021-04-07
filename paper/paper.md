@@ -49,7 +49,7 @@ Rejected article tracking is also valuable to the study of scientific misconduct
 
     - Dual submission (where an author has submitted the same article to multiple journals simultaneously) can be detected retrospectively with high accuracy. 
 
-    - In a similar way, self-plagiarism can potentially be detected by checking new-submissions against CrossRef with the tracker. 
+    - In a similar way, self-plagiarism can potentially be detected quickly and cheaply by checking new-submissions against CrossRef with the tracker. Although, the well-established [CrossCheck](https://www.crossref.org/services/similarity-check/) service based on [iThenticate](https://www.ithenticate.com/) should yield superior results. 
 
     - When a rejected article has been later published _and then retracted_ due to fraud or other misconduct, this can allow the publisher who rejected the paper to identify that case of misconduct in their own part of the peer-review system.
 
