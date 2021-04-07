@@ -14,7 +14,7 @@ from .ArXivOAIPMHRecord import ArXivOAIPMHRecord
 
 from .config import Config as config
 
-class ArXivOAIPMH():
+class ArXivOAIPMH:
     """
     Class for acquiring and accessing OAI-PMH data
     """
