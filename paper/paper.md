@@ -1,5 +1,5 @@
 ---
-title: 'The SAGE Rejected Article Tracker'
+title: The SAGE Rejected Article Tracker
 tags:
   - Python
   - peer-review
@@ -39,21 +39,23 @@ Rejected article tracking has been performed in a number of research settings [@
 
 To date, a lack of open source tools has prevented easy acquisition of data on rejected articles for analysis.
 
-Data acquired by rejected article tracking makes various insights into the peer-review and publication processes possible.
+Data acquired by rejected article tracking makes various insights into the peer-review and publication processes possible. E.g. It is possible to measure the rate at which rejected articles are published and cited. This shows the effectiveness of journal peer-review in identifying (or failing to identify) flaws in research.
 
-1. It is possible to measure the rate at which rejected articles are published and cited. This shows the effectiveness of journal peer-review in identifying (or failing to identify) flaws in research.
+Rejected article tracking is also valuable to the study of scientific misconduct (Examples: @Hesselmann2017; @Ding2019; @Bozzo2017). 
 
-2. Instances of author-misconduct can be identified and studied. 
+1. Common forms of author-misconduct can be identified and studied. 
 
-    - Dual submission (where an author has submitted the same article to multiple journals simultaneously) can be detected automatically. 
+    - Dual submission (where an author has submitted the same article to multiple journals simultaneously) can be detected retrospectively. 
+
+    - In a similar way, self-plagiarism can be detected by checking new-submissions against CrossRef with the tracker. 
 
     - When a rejected article has been later published _and then retracted_ due to fraud or other misconduct, researchers can identify failings in peer-review that may have missed obvious signs of misconduct.
 
-3. We speculate that further, as yet unstudied, forms of misconduct can be investigated with data retrieved this way.
+2. We speculate that further, as yet unstudied, forms of misconduct can be investigated with data retrieved this way.
 
     - Research articles may be edited fraudulently between rejection by one journal and acceptance by another. This is a very rare occurrence, but it may be possible to identify and study such cases.
 
-    - Often, research articles are rejected due to significant fundamental flaws in the science they present. If an author goes on to publish such work following rejection for this reason, it may simply be because the author disagreed that there were fundamental flaws in the work. However, it is possible that the author does so with deliberate intent to publish flawed work. This form of misconduct has never been studied and rejected article tracking is one step in doing so. 
+    - Often, research articles are rejected due to significant fundamental flaws in the science they present. If an author goes on to publish such work following rejection for this reason, it may simply be because the author disagreed that there were fundamental flaws in the work. However, it is also possible that the author does so with deliberate intent to publish flawed work. This form of misconduct has never been studied and rejected article tracking may be one step in doing so. 
 
 As the rate of creation of research manuscripts continues to grow at a rapid pace, the need to understand the peer-review process, improve efficiencies and tackle abuse becomes all the more pressing. 
 
