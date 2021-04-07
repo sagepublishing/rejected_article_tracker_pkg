@@ -28,16 +28,20 @@ class RejectedArticlesMatch:
         self.email = email
         self.config = config
         self.results = results
+        self.clf = self.load_model()
 
+    def load_model(self):
         # if we have created a new model using the training functions
-        # then this will 
+        # then this will pick that model instead of the standard one.
         new_model_path = mlconfig.new_logreg_model_loc
+        old_model_path = mlconfig.old_logreg_model_loc
         if os.path.exists(new_model_path):
             with open(new_model_path, 'rb') as f:
-                self.clf = pickle.load(f)
+                clf = pickle.load(f)
         else:
-            with open(os.path.join(os.path.dirname(__file__)) + '/lr_model', 'rb') as f:
-                self.clf = pickle.load(f)
+            with open(old_model_path, 'rb') as f:
+                clf = pickle.load(f)
+        return clf
         
 
     def match(self) -> list:
@@ -58,14 +62,17 @@ class RejectedArticlesMatch:
                                   sleep=time.sleep,
                                   email=self.email).search()
 
-        search_results = [SearchResult(match_article=search_results[i],
-                                       query_article=article,
-                                       clf=self.clf,
-                                       rank=i + 1).to_dict() for i in range(len(search_results))]
+        if search_results!=None and len(search_results)>0:
+            search_results = [SearchResult(match_article=search_results[i],
+                                        query_article=article,
+                                        clf=self.clf,
+                                        rank=i + 1).to_dict() for i in range(len(search_results))]
 
-        winner = BestCandidate(candidates=search_results, threshold=self.config['threshold']).find()
+            winner = BestCandidate(candidates=search_results, threshold=self.config['threshold']).find()
+        else:
+            winner = None
 
-        if winner is None:
+        if winner == None:
             self.results.append(EmptyResult(original=article).to_dict())
         else:
             self.results.append(Result(original=article, winner=winner).to_dict())
