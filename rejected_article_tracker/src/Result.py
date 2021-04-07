@@ -14,7 +14,7 @@ class Result:
         # however, sometimes appears as just a string
         # on the off-chance that the inconsistency extends to other structures
         # explicitly check for list, string and, if it's anything else, switch to empty string. 
-        self.title = self.winner.get('full_title', '')
+        self.title = self.winner.get('full_title', self.winner.get('title',''))
         self.title = self.title[0].strip() if type(self.title) == list else self.title
         self.title = self.title.strip() if type(self.title) == str else ''
 
