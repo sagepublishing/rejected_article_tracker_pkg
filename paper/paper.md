@@ -43,7 +43,7 @@ To date, a lack of open source tools has prevented easy acquisition of data on r
 
 Data acquired by rejected article tracking makes various insights into the peer-review and publication processes possible. E.g. It is possible to measure the rate at which rejected articles are published and cited. This provides evidence for the effectiveness of journal peer-review in identifying (or failing to identify) flaws in research.
 
-Rejected article tracking is also valuable to the study of scientific misconduct (examples: @Hesselmann2017; @Ding2019; @Bozzo2017). 
+Rejected article tracking is also valuable to the study of scientific misconduct (examples: [@Hesselmann2017; @Ding2019; @Bozzo2017]). 
 
 1. Common forms of author-misconduct can be identified and studied. 
 
