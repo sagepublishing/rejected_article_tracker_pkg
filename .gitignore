@@ -6,4 +6,5 @@ __pycache__/
 htmlcov/
 *.log
 *.vscode
-*.ipynb-checkpoints
+*.ipynb-checkpoints/*
+rejected_article_tracker/src/ML/notebooks/.ipynb_checkpoints/modeling-checkpoint.ipynb
