@@ -1,5 +1,5 @@
 ---
-title: The SAGE Rejected Article Tracker
+title: 'The SAGE Rejected Article Tracker'
 tags:
   - Python
   - peer-review
@@ -13,7 +13,8 @@ authors:
     orcid: 0000-0002-8529-9990
     affiliation: 1
 affiliations:
-  - name: SAGE Publishing, 1 Oliver's Yard, London, EC1Y 1SP
+  - name: "SAGE Publishing, 1 Oliver's Yard, London, EC1Y 1SP"
+  - index: 1
 date: 4 November 2020
 bibliography: paper.bib
 
