@@ -47,7 +47,12 @@ class Result:
         return ""
 
     def journal_title(self):
-        return self.winner['container-title'][0].strip() if 'container-title' in self.winner else ''
+        j_title =  self.winner['container-title']
+        if type(j_title)==list and len(j_title)>0:
+            j_title_str = self.winner['container-title'][0].strip()
+        else:
+            j_title_str = ''
+        return j_title_str
 
     def earliest_date(self) -> pd.Timestamp:
         """

@@ -2,8 +2,8 @@
 import sys
 import os
 
-from .src.RejectedArticlesMatch import RejectedArticlesMatch
-from .src.ScholarOneRejectedArticlesMatch import ScholarOneRejectedArticlesMatch
+from rejected_article_tracker.src.RejectedArticlesMatch import RejectedArticlesMatch
+from rejected_article_tracker.src.ScholarOneRejectedArticlesMatch import ScholarOneRejectedArticlesMatch
 
 sys.path.append(os.path.abspath("."))
 
@@ -19,4 +19,4 @@ dest_model_path = config.old_logreg_model_loc
 # and then move the models there.
 if not os.path.exists(config.ml_model_dir):
     os.mkdir(config.ml_model_dir)
-    shutil.move(lr_model_path, dest_model_path)
+shutil.move(lr_model_path, dest_model_path)
