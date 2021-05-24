@@ -7,4 +7,4 @@ htmlcov/
 *.log
 *.vscode
 *.ipynb-checkpoints/*
-rejected_article_tracker/src/ML/notebooks/.ipynb_checkpoints/modeling-checkpoint.ipynb
+rejected_article_tracker/src/ML/notebooks/.ipynb_checkpoints/modeling*
