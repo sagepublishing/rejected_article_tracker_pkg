@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-import statsmodels.api as sm
+# import statsmodels.api as sm
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, f1_score, precision_score, recall_score, accuracy_score
