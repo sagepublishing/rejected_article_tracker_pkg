@@ -19,4 +19,4 @@ dest_model_path = config.old_logreg_model_loc
 # and then move the models there.
 if not os.path.exists(config.ml_model_dir):
     os.mkdir(config.ml_model_dir)
-shutil.move(lr_model_path, dest_model_path)
+shutil.copy(lr_model_path, dest_model_path)
