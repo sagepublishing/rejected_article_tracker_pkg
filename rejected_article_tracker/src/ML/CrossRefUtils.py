@@ -126,7 +126,7 @@ class CrossRefUtils:
             # this doesn't always work, though. 
             url = r'http://api.crossref.org/works/{}'.format(urllib.parse.quote(doi))
             r = requests.get(url, headers = self.headers)
-            # self.check_response_time(r)
+            self.check_response_time(r)
             if self.validate_response(r) ==True:
                 try:
                     if r.json()['status']!='failed':
@@ -138,7 +138,7 @@ class CrossRefUtils:
                     logger.debug('Error in response.  Not interpretable as json? Searched for: {} Trying unescaped doi'.format(doi))
                     url = r'http://api.crossref.org/works/{}'.format(doi)
                     r = requests.get(url, headers = self.headers)
-                    # self.check_response_time(r)
+                    self.check_response_time(r)
                     if self.validate_response(r)==True:
                         return [r.json()['message']] # output should be a list for consistency
                     else:
@@ -155,7 +155,7 @@ class CrossRefUtils:
         url = r'http://api.crossref.org/works/?filter={}&rows={}'.format(dois_s, self.batch_size)
         # make request
         r = requests.get(url, headers = self.headers)
-        # self.check_response_time(r)
+        self.check_response_time(r)
         records = list()
         if self.validate_response(r)==True:
             data = r.json()
