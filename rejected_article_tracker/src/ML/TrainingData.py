@@ -34,6 +34,7 @@ class TrainingData():
         logger.info('CrossRef training data, length {}'.format(len(cr_training_data)))
         # now splice the arxiv data AND the CrossRef search results
         # into 1 dataframe
+        k=0
         for i,row in arx_training_data.iterrows():
             # doi = row['doi']
             pid = row['id']
@@ -47,8 +48,9 @@ class TrainingData():
                                             query_article=query_article
                                             ).to_dict()
                     training_data.append(training_row)
-                if i>0 and i%1000==0:
-                    logger.info('{} rows of data knitted together.'.format(i))
+                    k+=1
+                    if k>0 and k%1000==0:
+                        logger.info(f'{k} rows of data knitted together.')
         return pd.DataFrame(training_data)
 
 
