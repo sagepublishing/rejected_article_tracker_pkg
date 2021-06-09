@@ -124,7 +124,7 @@ class CrossRefUtils:
         if self.validate_doi(doi)==True:
             # crossref docs recommend URL-encoding DOIs
             # this doesn't always work, though. 
-            url = r'http://api.crossref.org/works/{}'.format(urllib.parse.quote(doi))
+            url = r'https://api.crossref.org/works/{}'.format(urllib.parse.quote(doi))
             r = requests.get(url, headers = self.headers)
             self.check_response_time(r)
             if self.validate_response(r) ==True:
@@ -136,7 +136,7 @@ class CrossRefUtils:
                 except:
                     # retry failures - doesn't add much consider commenting. 
                     logger.debug('Error in response.  Not interpretable as json? Searched for: {} Trying unescaped doi'.format(doi))
-                    url = r'http://api.crossref.org/works/{}'.format(doi)
+                    url = r'https://api.crossref.org/works/{}'.format(doi)
                     r = requests.get(url, headers = self.headers)
                     self.check_response_time(r)
                     if self.validate_response(r)==True:
@@ -152,7 +152,7 @@ class CrossRefUtils:
         # Crossref documentation recommends %-encoding dois
         dois_s = urllib.parse.quote(dois_s)
         # build query url
-        url = r'http://api.crossref.org/works/?filter={}&rows={}'.format(dois_s, self.batch_size)
+        url = r'https://api.crossref.org/works/?filter={}&rows={}'.format(dois_s, self.batch_size)
         # make request
         r = requests.get(url, headers = self.headers)
         self.check_response_time(r)
