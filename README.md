@@ -4,7 +4,14 @@
 ## What is it?
 
 The SAGE rejected article tracker
-This package will take metadata(title, authors etc...) for research articles and will find the published versions in CrossRef. 
+This package will take metadata(title, authors etc...) for research articles ("query articles") and will find the published versions in CrossRef ("match articles"). 
+
+The published versions are selected using very simple machine-learning. 
+1. Numerical values are calculated for the difference in the titles of each query article and each candidate match article returned by CrossRef.
+2. ArXiv preprints with known DOIs are used to train a simple logistic regression to find the correct candidate for each query. 
+
+This process is approximately 95% accurate. However, the package includes code to recreate the training dataset using the ArXiv and CrossRef APIs. This training dataset can be used to test other approaches to this problem and similar problems (such as detecting duplicate articles).
+
 Presently, the package takes JSON input, but using a library such as [pandas](https://github.com/pandas-dev/pandas) to convert it, spreadsheet data can be used.  
 
 If you are a ScholarOne user, you can produce this easily. More detailed instructions are below. 
@@ -50,7 +57,7 @@ articles = [ # some values fabricated for the example
 
 # @see below for configuration details.
 config = {
-    "threshold": 70, # Filters out matches which are less than this nubmer  
+    "threshold": 70, # Filters out matches which have a fuzz.ratio below this value (fuzz.ratio is a normalised form of Levenshtein distance)
 }
 
 
@@ -228,13 +235,26 @@ Example out when NO match found:
 ]
 ``` 
 
+**To rebuild the training dataset and train a new model**
+
+Note that rebuilding the training dataset relies on external APIs and can be a very slow process (a few days depending on response times). However, once acquired, model training and testing takes seconds.
+
+```python
+
+from rejected_article_tracker.src.ML.Train import LogReg
+
+LogReg().best_model_to_file()
+
+```
+
+
 ---
 ## Configuration
 Configuration is set using a dictionary. The following values can be set: 
 
 | Name | Description | Example
 | --- | --- | --- |  
-| `threshold` | An integer value which determines the minimum "cut off" for scoring matching articles. Any matching aerticles below this score will not be considered. | `75` |   
+| `threshold` | An integer value which determines the minimum "cut off" for scoring matching articles. Any matching articles below this score will not be considered. | `70` |   
 ---
 
 
