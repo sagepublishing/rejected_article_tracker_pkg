@@ -30,7 +30,7 @@ Given metadata for a rejected article, the rejected article tracker will:
 
 * select the most likely correct result from that list using simple machine learning.
 
-The tracker can be used to track rejected articles, or to perform DOI-resolution for other reasons, such as assigning DOIs to ArXiv preprints in order to connect the preprints to their published versions.
+The target audience for the tracker is researchers studying rejected articles, or performing DOI-resolution for other reasons, such as assigning DOIs to preprints in order to connect the preprints to their published versions. 
 
 The tracker is available as [a Python package](https://github.com/ad48/rejected_article_tracker_pkg) with [a temporary live demonstration](https://rejectedarticlestorage.z6.web.core.windows.net/) scheduled to run until mid-2021.
 
@@ -38,9 +38,7 @@ The tracker is available as [a Python package](https://github.com/ad48/rejected_
 
 As the rate of creation of research manuscripts continues to grow at a rapid pace, the need to understand the peer-review process, improve efficiencies and tackle abuse becomes all the more pressing. 
 
-Rejected article tracking has been performed in a number of research settings [@Wijnhoven2010; @Docherty2017; @Citerio2018; @Chung2020]. Typically, this is done by manually searching for rejected articles over a small dataset. However, commercial rejected article trackers are available [@HighWire; @Incorvia2015].
-
-To date, a lack of open source tools has prevented easy acquisition of data on rejected articles for analysis.
+Rejected article tracking has been performed in a number of research settings [@Wijnhoven2010; @Docherty2017; @Citerio2018; @Chung2020]. Typically, this is done by manually searching for rejected articles over a small dataset. However, commercial rejected article trackers are available [@HighWire; @Incorvia2015]. To date, a lack of open source tools has prevented easy acquisition of data on rejected articles for analysis.
 
 Data acquired by rejected article tracking makes various insights into the peer-review and publication processes possible. E.g. 
 
@@ -58,6 +56,7 @@ Common forms of author-misconduct can be identified and studied.
 
 Finally, the rejected article tracker can also be used to link preprints with their published versions. Due to the rapid recent growth in preprint servers [@Fraser2020], there is a growing need to improve the data-quality surrounding preprints. 
 
+The rejected article tracker is set up, by default, to accept data in the format exported by [ScholarOne](https://clarivate.com/webofsciencegroup/solutions/scholarone/), presently the most popular system for managing peer-review. However, the input data required is minimal, so data from any peer-review management system should be easily adapted for the tracker. Instructions are given in the Readme.md file of [the github repository](https://github.com/ad48/rejected_article_tracker_pkg).
 
 # Acknowledgements
 

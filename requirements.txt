@@ -1,10 +1,15 @@
+markdown
 pandas
 openpyxl
 xlsxwriter
+python-Levenshtein
 fuzzywuzzy
+oaiharvest
+langdetect
 requests
-sklearn
+scikit-learn==0.23.0
 numpy
 coverage
 gensim
 python-Levenshtein
+tqdm
