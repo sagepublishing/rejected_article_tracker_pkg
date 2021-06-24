@@ -5,7 +5,7 @@ import setuptools
 
 setuptools.setup(
     name='rejected_article_tracker',
-    version='1.5.4',
+    version='1.5.5',
     scripts=['rejected_article_tracker/__init__.py'],
     author="Andy Hails",
     author_email="andy.hails@sagepub.co.uk",
@@ -35,5 +35,6 @@ setuptools.setup(
         'numpy',
         'python-Levenshtein',
         'tqdm',
+        'xmltodict'
     ],
 )

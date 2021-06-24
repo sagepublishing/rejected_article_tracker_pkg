@@ -13,3 +13,4 @@ coverage
 gensim
 python-Levenshtein
 tqdm
+xmltodict
