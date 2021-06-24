@@ -79,7 +79,7 @@ class CrossRefUtils:
         # simple rule for sleeping if responses are slow
         if response_time > 1.0:
             # logger.debug('CrossRef slow to respond. Sleep for a few seconds.')
-            time.sleep(int(response_time)/2)            
+            time.sleep(response_time//2)            
 
     def validate_doi(self, doi:str):
         """
