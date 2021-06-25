@@ -19,15 +19,11 @@ class ArXivOAIPMH:
     Class for acquiring and accessing OAI-PMH data
     """
     def __init__(self):
-        logger = logging.getLogger(__name__).getChild(self.__class__.__name__)
+        self.logger = logging.getLogger(__name__).getChild(self.__class__.__name__)
         self.ensure_dirs()
         self.data_location = config.oai_pmh_dataloc
-        xml_filepaths = self.get_xml_filepaths()
-        if len(xml_filepaths)<config.max_training_docs:
-            logger.warning('Insufficient training data from ArXiv. Pulling data again according to parameters in config.')
-            self.acquire_oai_pmh()
-        else:
-            logger.debug('Sufficient OAI-PMH data found. Loading from files.')
+        self.xml_filepaths = self.get_xml_filepaths()
+        
             
     def get_xml_filepaths(self):
         """
@@ -106,8 +102,12 @@ class ArXivOAIPMH:
         Yield OAI-PMH XML data from file. 
         Acquire if directory empty
         """
-        xml_filepaths = self.get_xml_filepaths()
-        for xml_filepath in tqdm(xml_filepaths):
+        if len(self.xml_filepaths)<config.max_training_docs:
+            self.logger.warning('Insufficient training data from ArXiv. Pulling data again according to parameters in config.')
+            self.acquire_oai_pmh()
+        else:
+            self.logger.debug('Sufficient OAI-PMH data found. Loading from files.')
+        for xml_filepath in tqdm(self.xml_filepaths):
             with open(xml_filepath,'r') as f:
                 xml_data = f.read()
                 yield xml_data
