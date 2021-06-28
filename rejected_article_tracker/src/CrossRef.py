@@ -43,7 +43,7 @@ class CrossRef(SearchProvider):
 
         headers = {
             'User-Agent': "User {}: SAGE article lookup for article {}".format(self.email, self.article['manuscript_id']),
-            'mailto': os.environ['MY_EMAIL']
+            'mailto': os.environ.get('MY_EMAIL','')
         }
         response = self.http_client.get(address, 
                                         params=payload, 
