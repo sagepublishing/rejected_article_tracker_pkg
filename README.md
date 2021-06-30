@@ -240,11 +240,9 @@ Example out when NO match found:
 Note that rebuilding the training dataset relies on external APIs and can be a very slow process (a few days depending on response times). However, once acquired, model training and testing takes seconds.
 
 ```python
-
 from rejected_article_tracker.src.ML.Train import LogReg
 
 LogReg().best_model_to_file()
-
 ```
 
 
