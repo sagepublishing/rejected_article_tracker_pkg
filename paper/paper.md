@@ -30,7 +30,7 @@ Given metadata for a rejected article, the rejected article tracker will:
 
 * select the most likely correct result from that list using simple machine learning.
 
-The target audience for the tracker is researchers studying rejected articles. The task performed by the tracker is 'DOI-resolution'. I.e. finding the correct Digital Object Identifier given incomplete data about a paper. So, while the intended use of the tracker is to track rejected articles, it might be used by researchers performing DOI-resolution for other reasons, such as assigning DOIs to preprints in order to connect the preprints to their published versions. This is a particularly topical application at the current time due to the rapid growth of preprint servers in recent years. [REFERENCE]
+The target audience for the tracker is researchers studying rejected articles. The task performed by the tracker is 'DOI-resolution'. I.e. finding the correct Digital Object Identifier given incomplete data about a paper. So, while the intended use of the tracker is to track rejected articles, it might be used by researchers performing DOI-resolution for other reasons, such as assigning DOIs to preprints in order to connect the preprints to their published versions (e.g. @Cabanac2021). This is a particularly topical application at the current time due to the rapid growth of preprint servers in recent years (@Hoy2020).
 
 The tracker is available as [a Python package](https://github.com/ad48/rejected_article_tracker_pkg) with [a temporary live demonstration](https://rejectedarticlestorage.z6.web.core.windows.net/) scheduled to run until mid-2021.
 
@@ -72,7 +72,7 @@ We search the CrossRef API for each preprint's DOI as well as the best incorrect
 | title1| author_list1 | title3 | author_list3 | incorrect |
 
 We then 
-- Calculate the Levenshtein distance between the titles in each row. This is normalised to a number between 0 and 100 using the `fuzzywuzzy` package's `fuzz.ratio` method.
+- Calculate the Levenshtein distance between the titles in each row. This is normalised to a number between 0 and 100 using the `fuzz.ratio` method from the [Python `fuzzywuzzy` package](https://pypi.org/project/fuzzywuzzy/).
 - Normalise all author names to a single string of `first_initial+last_name` in lower case. Then calculate 2 boolean values: one showing if there is a 100% match in author lists and one showing if there is at least 1 author name matching in the 2 lists. 
 
 This gives us a table of numerical data:
@@ -90,7 +90,7 @@ The complete code required to build and customise the training dataset is includ
 
 ## The dataset
 
- The training dataset is also useful for other tasks such as identifying duplicate submissions. E.g. if an author submits a paper to 2 journals at once, fuzzy matching on titles and author lists is an effective way to identify this behaviour. 
+ The training dataset is also useful for other tasks such as identifying duplicate submissions. E.g. if an author submits a paper to 2 or more journals at once, fuzzy matching on titles and author lists is an effective way to identify this behaviour. 
 
 
 # Acknowledgements
