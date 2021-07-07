@@ -84,11 +84,11 @@ This gives us a table of numerical data:
 | 98 | 1 | 1 | 1 |
 | 70 | 1 | 0 | 0 |
 
-Then this data can be used to create a Logistic Regression model using [Scikit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) with `label` as our target variable. The model essentially learns what the typical difference is between a preprint title and its published version - a bespoke form of fuzzy matching. 
+Then this data can be used to create a Logistic Regression classifier model using [Scikit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) with `label` as our target variable. The model essentially learns what the typical difference is between a preprint title and its published version - a bespoke form of fuzzy matching. 
 
 This model can then be used to classify search results from the CrossRef API in order to find the correct DOI for a rejected article.
 
-The complete code required to build and customise the training dataset is included in the SAGE Rejected Article Tracker.
+The complete code required to build and customise the training dataset is included in [the SAGE Rejected Article Tracker](https://github.com/ad48/rejected_article_tracker_pkg).
 
 ## The dataset
 
