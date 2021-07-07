@@ -71,8 +71,10 @@ We search the CrossRef API for each preprint's DOI as well as the best incorrect
 | title1| author_list1 | title2 | author_list2 | correct |
 | title1| author_list1 | title3 | author_list3 | incorrect |
 
-We then 
+We then:
+
 - Calculate the Levenshtein distance between the titles in each row. This is normalised to a number between 0 and 100 using the `fuzz.ratio` method from the [Python `fuzzywuzzy` package](https://pypi.org/project/fuzzywuzzy/).
+
 - Normalise all author names to a single string of `first_initial+last_name` in lower case. Then calculate 2 boolean values: one showing if there is a 100% match in author lists and one showing if there is at least 1 author name matching in the 2 lists. 
 
 This gives us a table of numerical data:
