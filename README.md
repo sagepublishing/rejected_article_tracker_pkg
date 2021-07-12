@@ -113,6 +113,10 @@ The report should have the following columns:
 It’s ok to include other columns in the Excel file, but they are not needed. 
 _IMPORTANTLY:_ remember to download your report as Excel 2007 Data Format.
 
+If not using ScholarOne, then simply prepare your submission data with the above column headings ensuring that
+- Author lists are correctly formatted `last_name1, first_name1; last_name2, first_name2;...`
+- Date columns (`Submission Date` and `Decision Date`) are correctly formatted, either as datetime strings (as below) or as simple date strings, e.g. `2010-12-31` for 31 December 2010.
+
 **Usage:**
 ```python
 
