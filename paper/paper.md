@@ -94,6 +94,8 @@ The complete code required to build and customise the training dataset is includ
 
  The training dataset is also useful for other tasks such as identifying duplicate submissions. E.g. if an author submits a paper to 2 or more journals at once, fuzzy matching on titles and author lists is an effective way to identify this behaviour. 
 
+ A dataset similar to the one used to train the SAGE Rejected Article Tracker is available to download from [Zenodo](http://doi.org/10.5281/zenodo.5122848) [@SAGERATData].
+
 
 # Acknowledgements
 
