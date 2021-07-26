@@ -1,1 +1,2 @@
 include rejected_article_tracker/src/ML/small_models/lr_model
+include rejected_article_tracker/data/fake_rejected_articles.xlsx

@@ -5,7 +5,7 @@ import setuptools
 
 setuptools.setup(
     name='rejected_article_tracker',
-    version='1.5.5',
+    version='20210707a',
     scripts=['rejected_article_tracker/__init__.py'],
     author="Andy Hails",
     author_email="andy.hails@sagepub.co.uk",
@@ -15,7 +15,8 @@ setuptools.setup(
     url="https://github.com/sagepublishing/rejected_article_tracker_pkg",
     packages=setuptools.find_packages(),
     include_package_data=True,
-    package_data={'': ['rejected_article_tracker/src/ML/small_models/lr_model']},
+    package_data={'': ['rejected_article_tracker/src/ML/small_models/lr_model',
+                        'rejected_article_tracker/data/fake_rejected_articles.xlsx']},
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
