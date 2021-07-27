@@ -10,3 +10,4 @@ htmlcov/
 rejected_article_tracker/src/ML/notebooks/.ipynb_checkpoints/modeling*
 *modeling.ipynb*
 *arxiv_tmp.csv*
+output.xlsx
