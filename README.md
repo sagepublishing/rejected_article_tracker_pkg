@@ -43,15 +43,15 @@ from rejected_article_tracker import RejectedArticlesMatch
 # Create a list of article data dicts.
 # PLEASE NOTE: Due to reliance on 3rd party APIs, the more articles the longer it takes.
  
-articles = [ # some values fabricated for the example
+articles = [ # Fake values fabricated for the example
 {
-      "Journal Name": "The International Journal of Robotics Research",
-      "Manuscript Title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection ",
-      "Author Names": "Levine, Sergey; Pastor, Peter; Krizhevsky, Alex; Ibarz, Julian; Quillen, Deirdre",
-      "Accept or Reject Final Decision": "",
-      "Decision Date": "2019-01-01T13:29:58.999Z", 
-      "Submission Date": "2018-10-01T13:29:58.999Z",
-      "Manuscript ID": "ABC-18-070",
+      "journal_name": "FakeJ2",
+      "manuscript_title": "Multiplex Genome Engineering Using CRISPR/Cas Systems",
+      "authors": "Cong, Le; Ran, F. Ann; Cox, David",
+      "final_decision": "",
+      "decision_date": "2012-02-15T13:29:58.999Z", 
+      "submission_date": "2012-02-14T13:29:58.999Z",
+      "manuscript_id": "ABC-18-070",
     }
 ]
 
@@ -137,14 +137,14 @@ articles = df[allowed_cols].to_dict('records')
 
 # Which might look like:
 """  
-articles = [
+articles = [ # Fake values fabricated for the example
 {
-      "Journal Name": "The International Journal of Robotics Research",
-      "Manuscript Title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection",
-      "Author Names": "Levine, Sergey; Pastor, Peter; Krizhevsky, Alex; Ibarz, Julian; Quillen, Deirdre",
+      "Journal Name": "FakeJ1",
+      "Manuscript Title": "Cosmological Consequences of a Rolling Homogeneous Scalar Field",
+      "Author Names": "Ratra, Bharat; Peebles, P J E",
       "Accept or Reject Final Decision": "",
-      "Decision Date": "2019-01-01T13:29:58.999Z", 
-      "Submission Date": "2018-10-01T13:29:58.999Z",
+      "Decision Date": "1987-06-14T13:29:58.999Z", 
+      "Submission Date": "1987-06-14T13:29:58.999Z",
       "Manuscript ID": "ABC-18-070",
     }
 ]
@@ -167,7 +167,7 @@ ScholarOneRejectedArticlesMatch(
     config=config,
     email=email,
     results=results
-).match()
+    ).match()
 
 print(results)
 ```
@@ -179,31 +179,32 @@ Example output when match found:
 ```json
 [
   {
-    "manuscript_id": "ABC-18-070",
-    "raw_manuscript_id": "ABC-18-070",
-    "journal_name": "The International Journal of Robotics Research",
-    "manuscript_title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection",
-    "submission_date": "2018-10-01",
-    "decision_date": "2019-01-01",
-    "authors": "Levine, Sergey; Pastor, Peter; Krizhevsky, Alex; Ibarz, Julian; Quillen, Deirdre",
-    "text_sub_date": "2018-07-20",
-    "match_doi": "10.1177/0278364917710318",
-    "match_type": "journal-article",
-    "match_title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection",
-    "match_authors": "Levine, Sergey; Pastor, Peter; Krizhevsky, Alex; Ibarz, Julian; Quillen, Deirdre",
-    "match_publisher": "SAGE Publications",
-    "match_journal": "The International Journal of Robotics Research",
-    "match_pub_date": "2019-10-10",
-    "match_earliest_date": "2019-10-10",
-    "match_similarity": 97,
-    "match_one": true,
-    "match_all": true,
-    "match_crossref_score": 107.89555,
-    "match_crossref_cites": 3,
-    "match_rank": 1,
-    "match_total_decision_days": 43384
+  "manuscript_id": "ABC-18-070", 
+  "raw_manuscript_id": "ABC-18-070", 
+  "journal_name": "FakeJ1", 
+  "manuscript_title": "Cosmological Consequences of a Rolling Homogeneous Scalar Field", 
+  "submission_date": "1987-06-14", 
+  "decision_date": "1987-06-14", 
+  "authors": "Bharat+Ratra, P J E+Peebles", 
+  "text_sub_date": "1987-06-14", 
+  "final_decision": "", 
+  "match_doi": "10.1103/physrevd.37.3406", 
+  "match_type": "journal-article", 
+  "match_title": "Cosmological consequences of a rolling homogeneous scalar field", 
+  "match_authors": "Bharat+Ratra, P. J. E.+Peebles", 
+  "match_publisher": "American Physical Society (APS)", 
+  "match_journal": "Physical Review D", 
+  "match_pub_date": "1988-6-15", 
+  "match_earliest_date": "2002-07-27", 
+  "match_similarity": 89, 
+  "match_one": 1, 
+  "match_all": 1, 
+  "match_crossref_score": 84.5133, 
+  "match_crossref_cites": 2881, 
+  "match_rank": 1, 
+  "match_total_decision_days": 5521
   }
-]
+  ]
 ```
 
 Example out when NO match found:
