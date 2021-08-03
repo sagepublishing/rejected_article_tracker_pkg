@@ -62,11 +62,12 @@ The rejected article tracker is set up, by default, to accept data in the format
 
 The CrossRef API is often used to perform record-linkage. A typical use-case is adding metadata to incomplete references in the reference-list of a research paper [@Tkaczyk2018]. Under this typical use-case, there are often other data available, such as journal name and publication date as well as issue, volume, or page numbers. However, if we wish to track rejected articles, it is likely that we only have the title and author names for an article and there is a lower chance that it exists in CrossRef's data (since not all rejected articles are published). So, searching the API for just these 2 things often results in incorrect results being retrieved.
 
-We begin with a dataset of ArXiv preprint metadata retrieved from the [ArXiv OAI-PMH API](https://arxiv.org/help/oa/index). This dataset resembles journal submission data in that it includes the titles and author names of preprints. In many cases, this data also includes the DOI of the same article when it was published. This means that we know the correct result of a record-linkage process for this article. We find that the title and author lists are not always identical. Titles often undergo minor (and occasionally major) changes and author lists can also change in a number of ways (full names might be used instead of initials, or perhaps new authors are added to an author list at some point in the process).
+We begin with a dataset of ArXiv preprint metadata retrieved from the [ArXiv OAI-PMH API](https://arxiv.org/help/oa/index). This dataset resembles journal submission data in that it includes the titles and author names of preprints. In many cases, this data also includes the DOI of the same article when it was published. The published version of the article is known as the "version of record" (VOR). This means that we know the correct result of a record-linkage process for this article. We find that the title and author lists are not always identical. Titles often undergo minor (and occasionally major) changes in the time between appearing as a preprint and publication. Author lists can also change in a number of ways (full names might be used instead of initials, or perhaps new authors are added to an author list at some point in the process).
+
 
 We search the CrossRef API for each preprint's DOI as well as the best incorrect search result. This means that we can fill out 2 rows of a table of data for each preprint.
 
-| preprint<br/>title | preprint<br/>authors | published<br/>title | published<br/>authors | correct/<br/>incorrect |
+| ArXiv <br/>title | ArXiv <br/>authors | VOR <br/>title | VOR <br/>authors | correct/ <br/>incorrect |
 |-|-|-|-|-|
 | title1| author_list1 | title2 | author_list2 | correct |
 | title1| author_list1 | title3 | author_list3 | incorrect |
