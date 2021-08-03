@@ -30,7 +30,7 @@ Given metadata for a rejected article, the rejected article tracker will:
 
 * select the most likely correct result from that list using simple machine learning.
 
-The target audience for the tracker is researchers studying rejected articles. The task performed by the tracker is record-linkage, i.e. finding the correct CrossRef metadata record given incomplete data about a paper. So, while the intended use of the tracker is to track rejected articles, it might be used by researchers performing record-linkage for other reasons, such as connecting preprints to their published versions, e.g. [@Cabanac2021]. This is a particularly topical application at the current time due to the rapid growth of preprint servers in recent years [@Hoy2020].
+The target audience for the tracker is researchers studying rejected articles. The task performed by the tracker is record-linkage, i.e., finding the correct CrossRef metadata record given incomplete data about a paper. So, while the intended use of the tracker is to track rejected articles, it can alo be used by researchers performing record-linkage for other reasons, such as connecting preprints to their published versions, e.g., work by @Cabanac2021. This is a particularly topical application at the current time due to the rapid growth of preprint servers in recent years [@Hoy2020].
 
 The tracker is available as [a Python package](https://github.com/ad48/rejected_article_tracker_pkg) with [a temporary live demonstration](https://rejectedarticlestorage.z6.web.core.windows.net/) scheduled to run until mid-2021.
 
@@ -38,9 +38,9 @@ The tracker is available as [a Python package](https://github.com/ad48/rejected_
 
 As the rate of creation of research manuscripts continues to grow at a rapid pace, the need to understand the peer-review process, improve efficiencies and tackle abuse becomes all the more pressing. 
 
-Rejected article tracking has been performed in a number of research settings [@Wijnhoven2010; @Docherty2017; @Citerio2018; @Chung2020]. Typically, this is done by manually searching for rejected articles over a small dataset. However, commercial rejected article trackers are available [@HighWire; @Incorvia2015]. To date, a lack of open source tools has prevented easy acquisition of data on rejected articles for analysis.
+Rejected article tracking has been performed in a number of research settings [@Wijnhoven2010; @Docherty2017; @Citerio2018; @Chung2020]. Typically, this is done by manually searching for rejected articles over a small dataset. However, commercial rejected article trackers are available [@HighWire; @Incorvia2015]. To date, the lack of open source tools has prevented easy acquisition of data on rejected articles for analysis.
 
-Data acquired by rejected article tracking makes various insights into the peer-review and publication processes possible. E.g. 
+Data acquired by rejected article tracking makes various insights into the peer-review and publication processes possible. For example: 
 
 - It is possible to measure the rate at which rejected articles are published and cited. This provides evidence for the effectiveness of journal peer-review in identifying (or failing to identify) flaws in research.
 
@@ -50,17 +50,17 @@ Common forms of author-misconduct can be identified and studied.
 
 - Dual submission (where an author has submitted the same article to multiple journals simultaneously) can be detected retrospectively with a high-degree of confidence. 
 
-- In a similar way, self-plagiarism can potentially be detected quickly and cheaply by checking new-submissions against CrossRef with the tracker. Although, the well-established [CrossCheck](https://www.crossref.org/services/similarity-check/) service based on [iThenticate](https://www.ithenticate.com/) should yield superior results. 
+- In a similar way, self-plagiarism can potentially be detected quickly and cheaply by checking new-submissions against CrossRef with the tracker. However, the well-established [CrossCheck](https://www.crossref.org/services/similarity-check/) service based on [iThenticate](https://www.ithenticate.com/) should yield superior results. 
 
 - When a rejected article has been later published _and then retracted_ due to fraud or other misconduct, this can allow the publisher who rejected the paper to identify that case of misconduct in their own part of the peer-review system.
 
 Finally, the rejected article tracker can also be used to link preprints with their published versions. Due to the rapid recent growth in preprint servers [@Fraser2020], there is a growing need to improve the data-quality surrounding preprints. 
 
-The rejected article tracker is set up, by default, to accept data in the format exported by [ScholarOne](https://clarivate.com/webofsciencegroup/solutions/scholarone/), a popular system for managing peer-review. However, the input data required is minimal, so data from any peer-review management system should be easily adapted for the tracker. Instructions are given in the `Readme.md` file of [the github repository](https://github.com/ad48/rejected_article_tracker_pkg).
+The rejected article tracker is set up, by default, to accept data in the format exported by [ScholarOne](https://clarivate.com/webofsciencegroup/solutions/scholarone/), a popular system for managing peer-review. However, the input data required is minimal, so data from any peer-review management system should be easily adapted for the tracker. Instructions are given in the `Readme.md` file of [the GitHub repository](https://github.com/ad48/rejected_article_tracker_pkg).
 
 ## How the matching algorithm works
 
-The CrossRef API is often used to perform record-linkage. A typical use-case would be for the purpose of adding metadata to incomplete references in the reference-list of a research paper [@Tkaczyk2018]. Under this typical use-case, there is often other data available, such as journal name and publication date as well as issue, volume or page numbers. However, if we wish to track rejected articles, it is likely that we only have the title and author-names for an article and there is a lower chance that it exists in CrossRef's data (since not all rejected articles are published). So, searching the API for just these 2 things often results in incorrect results being retrieved.
+The CrossRef API is often used to perform record-linkage. A typical use-case is adding metadata to incomplete references in the reference-list of a research paper [@Tkaczyk2018]. Under this typical use-case, there are often other data available, such as journal name and publication date as well as issue, volume, or page numbers. However, if we wish to track rejected articles, it is likely that we only have the title and author names for an article and there is a lower chance that it exists in CrossRef's data (since not all rejected articles are published). So, searching the API for just these 2 things often results in incorrect results being retrieved.
 
 We begin with a dataset of ArXiv preprint metadata retrieved from the [ArXiv OAI-PMH API](https://arxiv.org/help/oa/index). This dataset resembles journal submission data in that it includes the titles and author names of preprints. In many cases, this data also includes the DOI of the same article when it was published. This means that we know the correct result of a record-linkage process for this article. We find that the title and author lists are not always identical. Titles often undergo minor (and occasionally major) changes and author lists can also change in a number of ways (full names might be used instead of initials, or perhaps new authors are added to an author list at some point in the process).
 
@@ -92,7 +92,7 @@ The complete code required to build and customise the training dataset is includ
 
 ## The dataset
 
- The training dataset is also useful for other tasks such as identifying duplicate submissions. E.g. if an author submits a paper to 2 or more journals at once, fuzzy matching on titles and author lists is an effective way to identify this behaviour. 
+ The training dataset is also useful for other tasks such as identifying duplicate submissions. For example, if an author submits a paper to two or more journals at once, fuzzy matching on titles and author lists is an effective way to identify this behaviour. 
 
  A dataset similar to the one used to train the SAGE Rejected Article Tracker is available to download from [Zenodo](http://doi.org/10.5281/zenodo.5122848) [@SAGERATData].
 
