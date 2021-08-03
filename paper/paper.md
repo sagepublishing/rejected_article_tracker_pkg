@@ -100,6 +100,6 @@ The complete code required to build and customise the training dataset is includ
 
 # Acknowledgements
 
-We thank Helen King and Martha Sedgwick for support and advice in the development of this application. We also thank to the reviewers at [_Journal of Open Source Software_ (JOSS)](https://joss.theoj.org/) for knowledgeable, patient and highly constructive feedback: [Martin Fenner](https://github.com/mfenner), [Daniel Himmelstein](https://github.com/dhimmel) and [Daniel S. Katz](https://github.com/danielskatz).
+We thank Helen King and Martha Sedgwick for support and advice in the development of this application. We also thank the community at [_Journal of Open Source Software_ (JOSS)](https://joss.theoj.org/) for knowledgeable, patient and highly constructive feedback, particularly: [Martin Fenner](https://github.com/mfenner) (Reviewer), [Daniel Himmelstein](https://github.com/dhimmel) (Reviewer) and [Daniel S. Katz](https://github.com/danielskatz) (Editor).
 
 # References
