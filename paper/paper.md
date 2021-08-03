@@ -38,7 +38,7 @@ The tracker is available as [a Python package](https://github.com/ad48/rejected_
 
 As the rate of creation of research manuscripts continues to grow at a rapid pace, the need to understand the peer-review process, improve efficiencies and tackle abuse becomes all the more pressing. 
 
-Rejected article tracking has been performed in a number of research settings [@Wijnhoven2010; @Docherty2017; @Citerio2018; @Chung2020]. Typically, this is done by manually searching for rejected articles over a small dataset. However, commercial rejected article trackers are available [@HighWire; @Incorvia2015]. To date, the lack of open source tools has prevented easy acquisition of data on rejected articles for analysis.
+Rejected article tracking has been performed in a number of research settings [@Wijnhoven2010; @Docherty2017; @Citerio2018; @Chung2020]. Typically, this is done by manually searching for rejected articles over a small dataset. However, commercial rejected article trackers are available [@HighWire; @Dimensions2021]. To date, the lack of open source tools has prevented easy acquisition of data on rejected articles for analysis.
 
 Data acquired by rejected article tracking makes various insights into the peer-review and publication processes possible. For example: 
 
@@ -66,7 +66,7 @@ We begin with a dataset of ArXiv preprint metadata retrieved from the [ArXiv OAI
 
 We search the CrossRef API for each preprint's DOI as well as the best incorrect search result. This means that we can fill out 2 rows of a table of data for each preprint.
 
-| preprint title | preprint authors | published title | published authors | correct/incorrect |
+| preprint title | preprint auths | published title | published auths | correct/incorrect |
 |-|-|-|-|-|
 | title1| author_list1 | title2 | author_list2 | correct |
 | title1| author_list1 | title3 | author_list3 | incorrect |
