@@ -66,7 +66,7 @@ We begin with a dataset of ArXiv preprint metadata retrieved from the [ArXiv OAI
 
 We search the CrossRef API for each preprint's DOI as well as the best incorrect search result. This means that we can fill out 2 rows of a table of data for each preprint.
 
-| preprint<br>title | preprint<br>authors | published<br>title | published<br>auths | correct/<br>incorrect |
+| preprint<br>title | preprint<br>authors | published<br>title | published<br>authors | correct/<br>incorrect |
 |-|-|-|-|-|
 | title1| author_list1 | title2 | author_list2 | correct |
 | title1| author_list1 | title3 | author_list3 | incorrect |
