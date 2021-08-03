@@ -30,7 +30,7 @@ Given metadata for a rejected article, the rejected article tracker will:
 
 * select the most likely correct result from that list using simple machine learning.
 
-The target audience for the tracker is researchers studying rejected articles. The task performed by the tracker is record-linkage, i.e., finding the correct CrossRef metadata record given incomplete data about a paper. So, while the intended use of the tracker is to track rejected articles, it can alo be used by researchers performing record-linkage for other reasons, such as connecting preprints to their published versions, e.g., work by @Cabanac2021. This is a particularly topical application at the current time due to the rapid growth of preprint servers in recent years [@Hoy2020].
+The target audience for the tracker is researchers studying rejected articles. The task performed by the tracker is record-linkage, i.e., finding the correct CrossRef metadata record given incomplete data about a paper. So, while the intended use of the tracker is to track rejected articles, it can also be used by researchers performing record-linkage for other reasons, such as connecting preprints to their published versions, e.g., work by @Cabanac2021. This is a particularly topical application at the current time due to the rapid growth of preprint servers in recent years [@Hoy2020].
 
 The tracker is available as [a Python package](https://github.com/ad48/rejected_article_tracker_pkg) with [a temporary live demonstration](https://rejectedarticlestorage.z6.web.core.windows.net/) scheduled to run until mid-2021.
 
