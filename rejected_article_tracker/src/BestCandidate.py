@@ -12,5 +12,4 @@ class BestCandidate():
         return candidates[np.argmax(result_scores)] if len(candidates) > 0 else None
 
     def __filter(self, candidate: dict):
-        return (candidate['similarity'] >= self.threshold) & \
-               candidate['author_match_one']
+        return (candidate['similarity'] >= self.threshold) & candidate['author_match_one']

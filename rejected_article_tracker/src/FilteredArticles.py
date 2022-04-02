@@ -18,7 +18,7 @@ class FilteredArticles:
             it's best to get the records filtered out of the way.
         """
         df = pd.DataFrame(articles)
-        df = df[df['manuscript_id'] != 'draft']
+        # df = df[df['manuscript_id'] != 'draft']
 
         df.loc[:,'raw_manuscript_id'] = df['manuscript_id'].map(lambda x: ManuscriptIdRaw(x).id())
         df.loc[:,'submission_date'] = df['submission_date'].map(lambda x: pd.to_datetime(x, errors='raise', utc=True))

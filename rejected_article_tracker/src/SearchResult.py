@@ -23,7 +23,7 @@ class SearchResult:
         match_article = self.match_article
         # add # of authors on the query article. This might affect model confidence?
         match_article['n_auths_query'] = len(self.query_article['authors'].split(','))
-        match_article['authors_list'] = self.authors_list(match_article['author'])
+        match_article['authors_list'] = self.authors_list(match_article.get('author',''))
         match_article.update(self.match_names(
                                         query_authors=self.query_article['authors'], 
                                         match_authors=self.match_article['authors_list']

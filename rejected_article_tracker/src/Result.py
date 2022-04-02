@@ -47,9 +47,9 @@ class Result:
         return ""
 
     def journal_title(self):
-        j_title =  self.winner['container-title']
+        j_title =  self.winner.get('container-title',[''])
         if type(j_title)==list and len(j_title)>0:
-            j_title_str = self.winner['container-title'][0].strip()
+            j_title_str = j_title[0].strip()
         else:
             j_title_str = ''
         return j_title_str
