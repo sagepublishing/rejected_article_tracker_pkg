@@ -56,5 +56,5 @@ class TestRejectedArticlesMatch(unittest.TestCase):
             email="andy.hails@sagepub.co.uk",
             results=results
         ).match()
-        self.assertTrue(len(results)==0, f"{results}")
+        self.assertTrue(len(results)==1, f"{results}")
         self.assertEqual(results[0]['match_doi'], "No Match")

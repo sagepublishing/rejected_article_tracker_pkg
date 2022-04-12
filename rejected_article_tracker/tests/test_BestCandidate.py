@@ -41,20 +41,20 @@ class TestBestCandidate(unittest.TestCase):
         winners = BestCandidate(candidates=candidates, threshold=.5).find()
         self.assertTrue(len(winners)==1, f"{winners}")
 
-    def test___no_matching_author_candidate_removed(self):
-        candidates = [
-            {
-                'id': 1,
-                'similarity': 80,
-                'classifier_score': .9,
-                'author_match_one': 0
-            },
-            {
-                'id': 2,
-                'similarity': 95,
-                'classifier_score': .9,
-                'author_match_one': 1
-            }
-        ]
-        winners = BestCandidate(candidates=candidates, threshold=.5).find()
-        self.assertTrue(len(winners)==1, f"{winners}")
+    # def test___no_matching_author_candidate_removed(self):
+    #     candidates = [
+    #         {
+    #             'id': 1,
+    #             'similarity': 80,
+    #             'classifier_score': .9,
+    #             'author_match_one': 0
+    #         },
+    #         {
+    #             'id': 2,
+    #             'similarity': 95,
+    #             'classifier_score': .9,
+    #             'author_match_one': 1
+    #         }
+    #     ]
+    #     winners = BestCandidate(candidates=candidates, threshold=.5).find()
+    #     self.assertTrue(len(winners)==1, f"{winners}")
