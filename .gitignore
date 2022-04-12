@@ -13,6 +13,7 @@ htmlcov/
 # ML playground
 rejected_article_tracker/src/ML/notebooks/.ipynb_checkpoints/modeling*
 *modeling.ipynb*
+arxiv_data_experiments.ipynb
 
 
 # data files
