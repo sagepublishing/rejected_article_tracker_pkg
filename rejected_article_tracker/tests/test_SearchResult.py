@@ -83,6 +83,7 @@ class TestSearchResult(unittest.TestCase):
 
     def test__classifier(self):
         query_article = {
+            'manuscript_id':'fake_ms_id',
             'authors': 'Andy Carlos+Hails, Helen+King, Adam+Day, D+Harris',
             'manuscript_title': 'Some Manuscript title'
         }

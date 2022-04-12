@@ -17,9 +17,9 @@ class FakeResponse:
         return {
             'message': {
                 'items': [
-                    "Article #1",
-                    "Article #2",
-                    "Article #3",
+                    {'DOI':"Article #1"},
+                    {'DOI':"Article #2"},
+                    {'DOI':"Article #3"},
                 ]
             }
         }

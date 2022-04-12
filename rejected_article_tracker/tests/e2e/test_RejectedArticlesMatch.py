@@ -2,24 +2,24 @@ import unittest
 from rejected_article_tracker.src.RejectedArticlesMatch import RejectedArticlesMatch
 
 config = {
-    "filter_dates": {'from': '2007-01-01', 'to': '2020-07-01'},
-    "threshold": 70,
+    "threshold": 0.5,
+    "max_results_per_article":10
 }
 
 
 class TestRejectedArticlesMatch(unittest.TestCase):
 
     def test_valid_lookup(self):
+        print('test_valid_lookup')
         print('This might take a while. Doing a lookup to crossref...')
         articles = [{
-            "manuscript_title": """
-                The Impact of Childhood Abuse on the Commercial Sexual Exploitation of Youth. 
-                A Systematic Review and Meta-Analysis""",
-            "authors": "De Vries, Ieke; Goggin, Kelly",
-            "manuscript_id": "TVA-18-057--CI_TEST_ENV",
-            "submission_date": "2018-07-20T13:29:58.999Z",
+            "manuscript_title": """Rural Business Hub: Framework for a New Rural Development Approach in Rain-Fed Areas of Pakistan—A Case of Punjab Province """,
+            'title_for_search': """Rural Business Hub: Framework for a New Rural Development Approach in Rain-Fed Areas of Pakistan—A Case of Punjab Province """,
+            "authors": "Baig, Irfan Ahmad; Ahmad, Rai Niaz; Baig, Sajjad Ahmad; Asghar Ali",
+            "manuscript_id": "ABC-12-0987",
+            "submission_date": "2018-07-02T00:00:00Z",
             "decision_date": "1899-12-30T00:00:00.000Z",
-            "journal_name": "Trauma, Violence, & Abuse",
+            "journal_name": "SAGE Open",
             "final_decision": ""
         }]
 
@@ -31,15 +31,17 @@ class TestRejectedArticlesMatch(unittest.TestCase):
             results=results
         ).match()
 
-        self.assertTrue(len(results), 1)
+        self.assertTrue(len(results)==1, 1)
         self.assertNotEqual(results[0]['match_doi'], "No Match")
 
     def test_no_match_lookup(self):
+        print('test_no_match_lookup')
         print('This might take a while. Doing a lookup to crossref...')
         articles = [{
             'manuscript_id': '1G--CI_TEST_ENV',
             'journal_name': 'Some Journal',
             'manuscript_title': 'What is in a name?',
+            'title_for_search':'what name?',
             'submission_date': '04-03-2019',
             'decision_date': '2020-05-12',
             'authors': 'Andy Hails',
@@ -54,5 +56,5 @@ class TestRejectedArticlesMatch(unittest.TestCase):
             email="andy.hails@sagepub.co.uk",
             results=results
         ).match()
-        self.assertTrue(len(results), 1)
+        self.assertTrue(len(results)==0, f"{results}")
         self.assertEqual(results[0]['match_doi'], "No Match")

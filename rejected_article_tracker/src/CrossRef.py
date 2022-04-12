@@ -4,8 +4,16 @@ import os
 import time
 
 class CrossRef(SearchProvider):
-    def __init__(self, article: dict, http_client, sleep, email='', rows=4):
+    def __init__(self, 
+                article: dict, 
+                
+                http_client, 
+                sleep, 
+                article_types = [], 
+                email='', 
+                rows=10):
         self.article = article
+        self.article_types = article_types
         self.http_client = http_client
         self.sleep = sleep
         self.email = email
@@ -29,20 +37,46 @@ class CrossRef(SearchProvider):
             good_response = False
         return good_response
 
+    @staticmethod
+    def validate_works_record(item):
+        if 'DOI' in item:
+            return True
+
+    def make_filter(self):
+        filter_arts_s = ','.join(['type:'+x for x in self.article_types])
+        # optionally include a filter for created-date
+        # this doesn't achieve much and slows the search down
+        # worst case is we find an article from a long time ago with same
+        # titles and author names
+        # filter_dates_s = 'from-created-date:'+ self.article.get('text_sub_date','')
+        # filter_s = ','.join([filter_arts_s,filter_dates_s])
+        filter_s = filter_arts_s
+        return filter_s
+
+    def build_payload(self):
+        payload = {
+            'query.bibliographic': self.article.get('title_for_search',self.article.get('manuscript_title')),
+            'query.author': self.article['authors'].split(';')[0],
+            'rows': self.rows
+        }
+
+        filter_s = self.make_filter()
+        
+        if len(filter_s)>0:
+            payload['filter'] = filter_s
+        return payload
+
+
     def search(self) -> list:
         """
         Searches CrossRef for matching titles.
         """
         address = "https://api.crossref.org/works/"
-        payload = {
-            # 'filter': 'from-created-date:{}'.format(self.article['text_sub_date']),
-            'query.bibliographic': self.article['manuscript_title'],
-            'query.author': self.article['authors'],#.split(', '),
-            'rows': self.rows
-        }
-        
+
+        payload = self.build_payload()
+
         headers = {
-            'User-Agent': "User {}: SAGE article lookup for article {}".format(self.email, self.article['manuscript_id']),
+            'User-Agent': f"User {self.email}: SAGE RAT search",
             'mailto': os.environ.get('MY_EMAIL','')
         }
         response = self.http_client.get(address, 
@@ -50,17 +84,7 @@ class CrossRef(SearchProvider):
                                         headers=headers)
         if self.validate_response(response)==True:
             items = response.json()['message']['items']
-
-            # testing code
-            correct_doi = self.article['query_doi']
-            correct_present = any(item['DOI']==correct_doi for item in items)
-            print(correct_doi, correct_present)
-            if not correct_present:
-                print()
-                print(self.article)
-                print('ITEMS')
-                print(items)
-                print()
+            items = [item for item in items if self.validate_works_record(item)]
             return items
         else:
             return None

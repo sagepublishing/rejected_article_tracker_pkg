@@ -9,7 +9,7 @@ from .SearchResult import SearchResult
 from .BestCandidate import BestCandidate
 from .Result import Result
 from .EmptyResult import EmptyResult
-
+from .ConfigChecker import ConfigChecker
 from .ML.config import Config as mlconfig
 
 from .LoadModel import LoadModel
@@ -27,7 +27,7 @@ class RejectedArticlesMatch:
         """
         self.articles = FilteredArticles(articles=articles)
         self.email = email
-        self.config = config
+        self.config = ConfigChecker(config).config
         self.results = results
         self.clf = LoadModel().clf
 
@@ -36,7 +36,9 @@ class RejectedArticlesMatch:
         """
         :return: list
         """
-        return list(map(self.__match_article, self.articles.to_dict()))
+        output = [x for x in list(map(self.__match_article, self.articles.to_dict())) 
+                    if x!=None]
+        return output
 
     def __match_article(self, article):
         """
@@ -46,21 +48,27 @@ class RejectedArticlesMatch:
         :return: None
         """
         search_results = CrossRef(article=article,
+                                article_types = self.config.get("article_types",[]),
                                   http_client=http_client,
                                   sleep=time.sleep,
                                   email=self.email).search()
-
         if search_results!=None and len(search_results)>0:
-            search_results = [SearchResult(match_article=search_results[i],
+            candidates = [SearchResult(match_article=search_results[i],
                                         query_article=article,
                                         clf=self.clf,
-                                        rank=i + 1).to_dict() for i in range(len(search_results))]
-
-            winner = BestCandidate(candidates=search_results, threshold=self.config['threshold']).find()
+                                        rank=i + 1).to_dict() 
+                                    for i in range(len(search_results))]
+            winners = BestCandidate(candidates=candidates, threshold=self.config['threshold']).find()
         else:
-            winner = None
+            winners = None
 
-        if winner == None:
+        # sometimes above yields an empty list
+        if type(winners)==list and len(winners)==0:
+            winners = None
+
+        if winners == None:
             self.results.append(EmptyResult(original=article).to_dict())
         else:
-            self.results.append(Result(original=article, winner=winner).to_dict())
+            self.results += [Result(original=article, winner=winner).to_dict().copy() 
+                            for winner in winners
+                            ][:self.config.get('max_results_per_article',10)]

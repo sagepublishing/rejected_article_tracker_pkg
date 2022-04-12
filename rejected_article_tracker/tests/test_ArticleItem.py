@@ -11,6 +11,7 @@ class TestArticleItem(unittest.TestCase):
             'manuscript_id': '1',
             'journal_name': 'Some Journal;',
             'manuscript_title': 'What is in a name?',
+            'title_for_search': 'What name?',
             'submission_date': pd.to_datetime('2020-04-03'),
             'decision_date': pd.to_datetime('2020-05-12'),
             'authors': 'Hails,Andy;Day,Adam',

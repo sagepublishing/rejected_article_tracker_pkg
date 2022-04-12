@@ -12,4 +12,5 @@ class ScholarOneArticleAdapter:
             "decision_date": article["Decision Date"],
             "journal_name": article["Journal Name"],
             "final_decision": article["Accept or Reject Final Decision"],
+            # "query_doi": article["query_doi"],
         }

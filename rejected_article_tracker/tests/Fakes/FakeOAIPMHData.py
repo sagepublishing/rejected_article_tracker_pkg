@@ -49,6 +49,7 @@ class FakeOAIPMHData:
                         'updated': '2007-04-02',
                         'authors': "Author+1, Author+2",
                         'title': 'Spectroscopic Properties of Polarons in Strongly Correlated Systems byExact Diagrammatic Monte Carlo Method',
+                        'title_for_search': 'Spectroscopic Properties of Polarons in Strongly Correlated Systems byExact Diagrammatic Monte Carlo Method',
                         'doi': '10.1007/978-1-4020-6348-0_12',
                         'abstract': 'We present recent advances in understanding of the ground and excited states of the electron-phonon coupled systems obtained by novel methods of Diagrammatic Monte Carlo and Stochastic Optimization, which enable the approximation-free calculation of Matsubara Green function in imaginary times and perform unbiased analytic continuation to real frequencies. We present exact numeric results on the ground state properties, Lehmann spectral function and optical conductivity of different strongly correlated systems: Frohlich polaron, Rashba-Pekar exciton-polaron, pseudo Jahn-Teller polaron, exciton, and interacting with phonons hole in the t-J model.'}
 

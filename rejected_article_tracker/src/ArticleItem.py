@@ -28,11 +28,13 @@ class ArticleItem:
             'raw_manuscript_id': ManuscriptIdRaw(article_dict['manuscript_id']).id(),
             'journal_name': self.__required(article_dict, 'journal_name'),
             'manuscript_title': self.__required(article_dict, 'manuscript_title'),
+            'title_for_search': self.__required(article_dict, 'title_for_search'),
             'submission_date': submission_date,
             'decision_date': article_dict['decision_date'],
             'authors': AuthorNames(article_dict['authors']).names(),
             'text_sub_date': article_dict['submission_date'].strftime("%Y-%m-%d"),
-            'final_decision': article_dict['final_decision']
+            'final_decision': article_dict['final_decision'],
+            # 'query_doi':article_dict['query_doi']
         }
 
     def to_dict(self):

@@ -21,6 +21,7 @@ class SearchResult:
 
     def to_dict(self) -> dict:
         match_article = self.match_article
+        match_article['manuscript_id'] = self.query_article['manuscript_id']
         # add # of authors on the query article. This might affect model confidence?
         match_article['n_auths_query'] = len(self.query_article['authors'].split(','))
         match_article['authors_list'] = self.authors_list(match_article.get('author',''))

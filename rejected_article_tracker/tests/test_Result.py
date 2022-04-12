@@ -26,6 +26,7 @@ class TestResult(unittest.TestCase):
             'author_match_one': 1,
             'author_match_all': 1,
             'score': 95.2,
+            'classifier_score':0.5,
             'is-referenced-by-count': 3,
             'rank': 1,
             'container-title': [
@@ -36,7 +37,7 @@ class TestResult(unittest.TestCase):
 
         res = Result(original=original, winner=winner).to_dict()
         self.assertEqual(res['manuscript_id'], original['manuscript_id'])
-        self.assertEqual(res['decision_date'], '2020-09-01')
+        self.assertEqual(res['decision_date'], '2020-09-01'),
         self.assertEqual(res['submission_date'], '2020-08-01')
         self.assertEqual(res['match_doi'], winner['DOI'])
         self.assertEqual(res['match_type'], winner['type'])
@@ -45,7 +46,7 @@ class TestResult(unittest.TestCase):
         self.assertEqual(res['match_publisher'], 'SAGE')
         self.assertEqual(res['match_journal'], 'Taxes and Taxation Trends')
         self.assertEqual(res['match_pub_date'], '2020-4-1')
-        self.assertEqual(res['match_earliest_date'], '2018-04-23')
+        self.assertEqual(res['match_earliest_date'], '2018-04-23T00:00:00Z')
         self.assertEqual(res['match_similarity'], 97)
         self.assertEqual(res['match_one'], True)
         self.assertEqual(res['match_all'], True)
@@ -73,6 +74,7 @@ class TestResult(unittest.TestCase):
             'similarity': 97,
             'author_match_one': 1,
             'author_match_all': 1,
+            'classifier_score':0.5,
             'score': 95.2,
             'is-referenced-by-count': 3,
             'rank': 1,
