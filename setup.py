@@ -23,6 +23,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
+        'scikit-learn==1.0.2',
         'markdown',
         'pandas',
         'openpyxl',
@@ -32,7 +33,7 @@ setuptools.setup(
         'oaiharvest',
         'langdetect',
         'gensim',
-        'scikit-learn==0.23.0',
+        
         'numpy',
         'python-Levenshtein',
         'tqdm',

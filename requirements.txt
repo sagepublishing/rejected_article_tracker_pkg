@@ -1,3 +1,4 @@
+scikit-learn==1.0.2
 markdown
 pandas
 openpyxl
@@ -7,7 +8,6 @@ fuzzywuzzy
 oaiharvest
 langdetect
 requests
-scikit-learn==0.23.0
 numpy
 coverage
 gensim
