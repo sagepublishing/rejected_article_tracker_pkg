@@ -1,3 +1,5 @@
+
+# misc
 build/
 dist/
 *.egg-info
@@ -7,7 +9,18 @@ htmlcov/
 *.log
 *.vscode
 *.ipynb-checkpoints/*
+
+# ML playground
 rejected_article_tracker/src/ML/notebooks/.ipynb_checkpoints/modeling*
 *modeling.ipynb*
+
+
+# data files
 *arxiv_tmp.csv*
 output.xlsx
+20200916-medRxiv_analysis.xlsx
+resultdf.csv
+testdf.csv
+
+# uncommitted models
+lr_model_new
