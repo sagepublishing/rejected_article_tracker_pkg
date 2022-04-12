@@ -57,12 +57,12 @@ articles = [ # Fake values fabricated for the example
 
 # @see below for configuration details.
 config = {
-    "threshold": 70, # Filters out matches which have a fuzz.ratio below this value (fuzz.ratio is a normalised form of Levenshtein distance)
+    "threshold": 0.5, # Filters out matches which have a score below this value
 }
 
 
 # The CrossRef API requires an email address for lookups.    
-email = "someome@example.com"
+email = os.getenv('MY_EMAIL','')
 
 
 # Define a 'results' list. 
@@ -152,7 +152,7 @@ articles = [ # Fake values fabricated for the example
 
 # @see below for configuration details.
 config = {
-    "threshold": 70, # Filters out matches which are less than this nubmer  
+    "threshold": 0.5, 
 }
 
 # The CrossRef API requires an email address for lookups.    
@@ -257,7 +257,9 @@ Configuration is set using a dictionary. The following values can be set:
 
 | Name | Description | Example
 | --- | --- | --- |  
-| `threshold` | An integer value which determines the minimum "cut off" for scoring matching articles. Any matching articles below this score will not be considered. | `70` |   
+| `threshold` | A float in the range (0.0-1.0) value which determines the minimum "cut off" for scoring matching articles. Any matching articles below this score will not be returned. Default: 0.5. Raising this value improves precision, lowering it improves recall.| `0.5` |   
+| `max_results_per_article` | Integer (1-10) for the maximum number of results returned for each article. Note that some articles are published twice, or with supplementary data. Default: 10 | `10` |
+| `article_types` | There are various article types available. Some rejected articles end up as book chapters, preprints or proceedings. List the article-types you will accept. Default: returns all article types | ['journal-article','book-chapter'] |
 ---
 
 
