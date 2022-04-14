@@ -53,12 +53,26 @@ class CrossRef(SearchProvider):
         filter_s = filter_arts_s
         return filter_s
 
+    def get_first_author_name(self):
+        first_author_name = self.article['authors'].split(';')[0]
+        return first_author_name
+
+    def get_title_for_search(self):
+        title_for_search = self.article.get('title_for_search','')
+        if len(title_for_search)<10 or len(title_for_search.split())<=3:
+            title_for_search = self.article.get('manuscript_title')
+        return title_for_search
+
+
     def build_payload(self):
         payload = {
-            'query.bibliographic': self.article.get('title_for_search',self.article.get('manuscript_title')),
-            'query.author': self.article['authors'].split(';')[0],
+            'query.bibliographic': self.get_title_for_search(),
             'rows': self.rows
         }
+
+        first_author_name = self.get_first_author_name()
+        if len(first_author_name)>1:
+            payload['query.author'] = first_author_name
 
         filter_s = self.make_filter()
         
