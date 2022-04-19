@@ -5,11 +5,11 @@ import setuptools
 
 setuptools.setup(
     name='rejected_article_tracker',
-    version='1.5.11',
+    version='1.5.12',
     scripts=['rejected_article_tracker/__init__.py'],
     author="Andy Hails",
     author_email="andy.hails@sagepub.co.uk",
-    description="Utility package to track if a journal article has been published elsewhere.",
+    description="Utility package to track if a journal article has been published somewhere.",
     long_description='',#long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/sagepublishing/rejected_article_tracker_pkg",
